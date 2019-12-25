@@ -1,2 +1,2 @@
-# frontend-intership
-Repo for Frontend Intership Projects
+# Repo for Frontend Intership Projects
+
