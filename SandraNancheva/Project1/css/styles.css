@@ -1,18 +1,21 @@
 * {
     margin:0; 
 }
+html {
+    scroll-behavior: smooth;
+}
 body {
     background-color: #f2d9d8;
     margin:0;
     height: auto;
     font-family: 'Courier Prime', monospace;
+
 }
 
 main {
     max-width: 900px;
     margin: auto;
     background-color:  #581845;
-    
 }
 
 #landingPage {
@@ -30,6 +33,14 @@ main {
    
 }
 
+hr {
+    width: 70%;
+    margin: auto;
+    margin-top: 1em;
+    border: 0.5px solid gray;
+    
+}
+
 #landingPage-image {
     background-image: url("../img/japan.jpg");
     width: 100%;
@@ -38,34 +49,11 @@ main {
 }
 
 
-@media (min-width: 500px) {
-    main {
-        box-shadow: 30px 0px 40px rgba(78, 17, 17, 0.1), -30px 0px 40px rgba(78, 17, 17, 0.1);
-    }
-    #landingPage{
-        display: flex;
-    } 
-    #landingPage-text {
-        height: 100%;
-        flex: 0 1 45vw;
-        
-    }
-    #landingPage-image {
-        height:100%;
-        flex: 0 1 55vw;
-    }
-    #landingPage-innertext {
-        margin-top: 100px;
-    }
-   
- }
-
-
 
 #landingPage-innertext {
     display: flex;
     flex-direction: column;
-    padding-top: 2rem;
+    padding-top: 4rem;
     
 }
 #landingPage-innertext h2{
@@ -77,7 +65,6 @@ main {
    
 }
 
- 
 img {
     width: 100%;
 }
@@ -116,6 +103,42 @@ footer {
     font-size: 2rem;
     padding-bottom: 1rem;
   }
+
   footer p {
       padding-bottom: 1rem;
   }
+
+  footer a {
+      text-decoration: none;
+      color: greenyellow;
+  }
+  
+  @media (min-width: 500px) {
+    main {
+        box-shadow: 30px 0px 40px rgba(78, 17, 17, 0.1), -30px 0px 40px rgba(78, 17, 17, 0.1);
+    }
+    #landingPage{
+        display: flex;
+    } 
+    #landingPage-text {
+        height: 100%;
+        flex: 0 1 45vw;
+        
+    }
+    #landingPage-image {
+        height:100%;
+        flex: 0 1 55vw;
+    }
+    #landingPage-innertext {
+        margin-top: 100px;
+    }
+
+    #landingPage-innertext a:hover {
+        font-size: 2rem;
+        color: firebrick;
+    }
+    i {
+        visibility: hidden;
+    }
+   
+ }
