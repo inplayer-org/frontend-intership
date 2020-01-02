@@ -104,7 +104,7 @@ footer h3 {
 @media (min-width: 500px) {
     #landing {
         display: flex;
-        height: 100%;
+        height: 100vh;
     }
     #landing-text {
         height: 100vh;
