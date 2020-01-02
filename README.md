@@ -10,10 +10,6 @@ You are alowed to use different photos, the website should be responsive and loo
 
 ### Javascript ES6 Features and Examples
 
-- **ES6 Features Overview**  
-  https://github.com/lukehoban/es6features  
-  Examples of each of the new major features
-
 - **ES6 Features Comparison**  
   http://es6-features.org/  
   Code snippets comparing ES6 features with their ES5 equivalents  
@@ -29,14 +25,6 @@ You are alowed to use different photos, the website should be responsive and loo
 - **ES6 New Features Tutorials**  
   https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBhgcpA8eTYYWg7im72LgLt  
   A set of video tutorials explaining the new features in ES6
-  
-- **ES6 Cheatsheet**  
-  https://es6cheatsheet.com/  
-  An interactive cheatsheet with editable and runnable examples to help explain the new syntax and features in ES6.  Offered as a "Pay What You Want" model, so $0 is a valid choice, but payments are requested.
-  
-- **ES6 Summary**  
-  https://github.com/zsolt-nagy/es6-summary  
-  A list of ES6 features and their ES5 equivalents
   
 - **Introduction to commonly used ES6 features**  
   https://zellwk.com/blog/es6/  
