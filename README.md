@@ -39,17 +39,8 @@ You are alowed to use different photos, the website should be responsive and loo
 - **Understanding ES6**  
   https://leanpub.com/understandinges6/read  
   An online book that covers all the changes and features involved in ES6
-  
-- **Javascript Alonge: The "Six" Edition**  
-  https://leanpub.com/javascriptallongesix/read  
-  A book that teaches Javascript and ES6 from a functional programming perspective
-  
-- **How ES6 classes really work, and how to build your own**  
-  https://medium.com/@robertgrosse/how-es6-classes-really-work-and-how-to-build-your-own-fd6085eb326a  
-  A deep dive into Javascript's object model, prototypal inheritance, and how ES6 classes are implemented in relation to prototypes.
  
-
-### React Resources: 
+### React Resources
 
 - [React Official Docs](https://reactjs.org/docs/getting-started.html)
 - [React JS - React Enlightenment](https://www.reactenlightenment.com)
