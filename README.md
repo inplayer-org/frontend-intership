@@ -18,10 +18,6 @@ You are alowed to use different photos, the website should be responsive and loo
   http://es6-features.org/  
   Code snippets comparing ES6 features with their ES5 equivalents  
 
-- **ES6 Overview in 350 Bullet Points**  
-  https://ponyfoo.com/articles/es6  
-  Quick samples and descriptions of all the various ES6 capabilities  
-
 - **Javascript Features**  
   http://jsfeatures.in/#ES6  
   More samples of features in ES5, ES6, and ES7
@@ -33,10 +29,6 @@ You are alowed to use different photos, the website should be responsive and loo
 - **ES6 Succinctly**  
   http://kamranahmed.info/blog/2016/04/04/es6-in-depth/  
   A very readable overview of the features in ES6, why you would want to use them, and examples showing what they look like.
-  
-- **How to Learn ES6**  
-  https://medium.com/javascript-scene/how-to-learn-es6-47d9a1ac2620  
-  A set of resources for learning ES6
   
 - **ES6 for Humans**  
   https://github.com/metagrover/ES6-for-humans  
@@ -66,10 +58,6 @@ You are alowed to use different photos, the website should be responsive and loo
   https://zellwk.com/blog/es6/  
   A great look at how several of the most useful ES6 features work, such as block scoping, arrow functions, and destructuring.
   
-- **Tiny ES6 Notebook**  
-  https://github.com/mattharrison/Tiny-ES6-Notebook  
-  A large list of notes, examples, and discussion on how to use the features in ES6
-  
 - **ECMASyntax**  
   https://ecmasyntax.io  
   A reference site listing the syntax of features in ES6, and comparing them with earlier ES behavior.
@@ -96,7 +84,7 @@ You are alowed to use different photos, the website should be responsive and loo
 - **How ES6 classes really work, and how to build your own**  
   https://medium.com/@robertgrosse/how-es6-classes-really-work-and-how-to-build-your-own-fd6085eb326a  
   A deep dive into Javascript's object model, prototypal inheritance, and how ES6 classes are implemented in relation to prototypes.
-  
+ 
 
 ### React Resources: 
 
