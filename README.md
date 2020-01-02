@@ -34,14 +34,6 @@ You are alowed to use different photos, the website should be responsive and loo
   https://github.com/metagrover/ES6-for-humans  
   A kickstarter guide to writing ES6.
   
-- **Start Using ES6 Today**  
-  http://wesbos.github.io/ES6-Talk/  
-  A set of slides describing the features in ES6
-  
-- **Learn Harmony (ES2015) Now**  
-  http://learnharmony.org/  
-  An interactive tool for learning and experimenting with ES6/ES2015 features
-  
 - **ES6 New Features Tutorials**  
   https://www.youtube.com/playlist?list=PL6gx4Cwl9DGBhgcpA8eTYYWg7im72LgLt  
   A set of video tutorials explaining the new features in ES6
