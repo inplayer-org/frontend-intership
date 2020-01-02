@@ -1,4 +1,4 @@
-# Repo for Frontend Intership Projects
+# InPlayer Frontend Intership Program
 
 ## Project 1: Responsive Photography Website
 
