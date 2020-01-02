@@ -21,14 +21,6 @@ You are alowed to use different photos, the website should be responsive and loo
 - **Javascript Features**  
   http://jsfeatures.in/#ES6  
   More samples of features in ES5, ES6, and ES7
-
-- **ES6 - The Bits You'll Actually Use**  
-  http://jamesknelson.com/es6-the-bits-youll-actually-use/  
-  A quick tour through some of the more useful features in ES6  
-  
-- **ES6 Succinctly**  
-  http://kamranahmed.info/blog/2016/04/04/es6-in-depth/  
-  A very readable overview of the features in ES6, why you would want to use them, and examples showing what they look like.
   
 - **ES6 for Humans**  
   https://github.com/metagrover/ES6-for-humans  
@@ -50,15 +42,6 @@ You are alowed to use different photos, the website should be responsive and loo
   https://zellwk.com/blog/es6/  
   A great look at how several of the most useful ES6 features work, such as block scoping, arrow functions, and destructuring.
   
-- **ECMASyntax**  
-  https://ecmasyntax.io  
-  A reference site listing the syntax of features in ES6, and comparing them with earlier ES behavior.
-  
-- **Laracasts: ES2015 Crash Course**  
-  https://laracasts.com/series/es6-cliffsnotes  
-  A video screencast series that covers the new features and syntax in ES6/ES2015.
-  
-
 #### In-Depth Details
 
 - **ES6 In Depth**  
