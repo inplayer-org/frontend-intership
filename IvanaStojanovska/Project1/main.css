@@ -3,6 +3,7 @@
 }
 
 body{
+    font: Arial,Helvetica;
     height: auto;
     background-color:rgb(231, 222, 222);
 }
@@ -12,25 +13,40 @@ body{
     height: 100%;
     margin: auto;
     background-color:white;
+    box-shadow: rgba(0,0,0, 0.2);
 
 }
 
 #first-div{
     display: flex;
+    height: 100vh;
 
 }
 #div-text{
     width: 50%;
-    padding-top: 7.5rem;
+    padding-top: 10.5rem;
     text-align: center;
 
 }
 
 #div-inner-text{
-    
+     text-align: center;
+     text-transform: uppercase;
+     font-weight: 12;
     display: flex;
     flex-direction: column;
     padding-top: 4rem;
+}
+.div-inner-text h1{
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 12;
+}
+.div-inner-text p{
+    text-align: center;
+    font-weight: bold;
+    font-size:  1.25em;
+    color: grey;
 }
 .div-inner-text{
     flex-grow: 1;
@@ -38,7 +54,8 @@ body{
 #photo-div {
     background: url("grid-barcelona.jpg");
     width: 50%;
-    height: 25rem;
+    /* height: 25rem; */
+    height: 100%;
     flex-grow: 1;
     background-position: center;
     background-size: cover;
@@ -46,11 +63,12 @@ body{
 
 }
 #photo-div img{
-    background-position: center
+    background-position: center;
+    height: 100%;
 }
 .button button{
     margin-top:  1.25em;
-    width: 6.25em;
+    width: 9.25em;
     height:  3.125em;
     border-radius: 25%;
     background-color: #f2d9d8;;;
@@ -67,19 +85,34 @@ button:hover{
     background-color:#f2d9d8;;
 }
 #two-div h1{
+    color: rgb(97, 93, 93);
+    margin: auto;
     text-align: center;
     text-transform: uppercase;
     padding: 10px;
+    border-right: 1px dotted grey;
+    border-left: 1px dotted grey;
+    width: 6.25em
 }
 
 #photos{
     height: 100vh;
     background-color: turquoise;
 }
+.photos-h1{
+  margin: auto;
+  /* width:  0.05em;
+  border-left: 1px solid black;
+  border-right: 1px solid black; */
+}
 
 .div-photo{
     height: 50vh;
     background-color: thistle;
+}
+
+.div-photo img a:hover{
+    background-color: rgba(0,0,0, 0.2);
 }
 .div-photo img{
     width: 100%;
@@ -90,15 +123,43 @@ button:hover{
     background-color:#f2d9d8;
 
     }
+    .description p{
+       text-align: center;
+       color:rgb(97, 93, 93);
+
+    
+        }
 
     .foother{
         width: 100%;
         height: 7%;
-        background-color: white;
+        background-color: #f2d9d8;
         text-align: center;
+        border-top: 1px dotted grey;
+    }
+    .last-div{
+        background-color: #f2d9d8;;
+        text-align: center;
+       
+    }
+    .text-info{
+       text-align: center;
+    }
+    .text-info h2{
+        text-transform: uppercase;
+        font-size: 2.25em;
+        color:grey
+
+    }
+    .text-info p{
+        color: grey;
     }
     .foother p{
+        color: grey;
         padding-top: 1em ;
+        
+        font-size: 20px;
+
     }
 
 @media (max-width: 600px){
