@@ -1,0 +1,133 @@
+* {
+    margin:0; 
+}
+
+body{
+    height: auto;
+    background-color:rgb(231, 222, 222);
+}
+
+#main-container{
+    max-width: 900px;
+    height: 100%;
+    margin: auto;
+    background-color:white;
+
+}
+
+#first-div{
+    display: flex;
+
+}
+#div-text{
+    width: 50%;
+    padding-top: 7.5rem;
+    text-align: center;
+
+}
+
+#div-inner-text{
+    
+    display: flex;
+    flex-direction: column;
+    padding-top: 4rem;
+}
+.div-inner-text{
+    flex-grow: 1;
+}
+#photo-div {
+    background: url("grid-barcelona.jpg");
+    width: 50%;
+    height: 25rem;
+    flex-grow: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+
+}
+#photo-div img{
+    background-position: center
+}
+.button button{
+    margin-top:  1.25em;
+    width: 6.25em;
+    height:  3.125em;
+    border-radius: 25%;
+    background-color: #f2d9d8;;;
+    border: 1px solid none;
+}
+button:hover{
+    background-color: hotpink;
+    border: 1px solid black;
+}
+
+#two-div{
+    height: 10%;
+    margin: auto;
+    background-color:#f2d9d8;;
+}
+#two-div h1{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 10px;
+}
+
+#photos{
+    height: 100vh;
+    background-color: turquoise;
+}
+
+.div-photo{
+    height: 50vh;
+    background-color: thistle;
+}
+.div-photo img{
+    width: 100%;
+    height: 100%;
+}
+.description{
+    height: 10vh;
+    background-color:#f2d9d8;
+
+    }
+
+    .foother{
+        width: 100%;
+        height: 7%;
+        background-color: white;
+        text-align: center;
+    }
+    .foother p{
+        padding-top: 1em ;
+    }
+
+@media (max-width: 600px){
+    #first-div{
+        flex-direction:column;
+    }
+    #two-div h1{
+        border-left: 1px solid black;
+        border-right: 1px solid black;
+        font-size:  1.3125em;
+    }
+
+    #photo-div, #div-text{
+        width: 100%;
+    }
+
+    #div-text{
+        padding-top: 60px;
+        height: 11.25rem;
+        padding-bottom: 1.25rem;
+    }
+    .description p{
+        /* font-size: 0.875rem; */
+        font-size:  0.6em
+
+
+    }
+    .foother p{
+        padding-top:  0.8em;
+        font-size: 0.875rem
+    }
+}
