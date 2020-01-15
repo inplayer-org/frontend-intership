@@ -49,7 +49,7 @@ You are alowed to use different photos, the website should be responsive and loo
 
 ### Description of the assignment
 
-Acceptance criteria:
+### Acceptance criteria:
 - Application should provide 7-day (or less if there any API restrictions) forecast starting from today
 - City can be selected by name or current geo-coordinates can be used
 - In the list temperature should be shown for a daytime, icons should be neutral
@@ -58,7 +58,7 @@ Acceptance criteria:
 - If page was reloaded then application should restore state (if any city was selected by name or coordinates, it should be shown saved forecast, but in background, app should ask about new data)
 - Make it responsive (suggest your option for mobile)
 
-Before you start:
+### Before you start:
 - font family – Roboto;
 - you can use this API http://openweathermap.org/api or any other, or create mock API on your own;
 - weather icons available here https://erikflowers.github.io/weather-icons/
