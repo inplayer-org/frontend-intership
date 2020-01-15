@@ -62,6 +62,7 @@ You are alowed to use different photos, the website should be responsive and loo
 - weather icons available here https://erikflowers.github.io/weather-icons/
 - other icons – https://material.io/icons/
 
+### Images
 <img src="https://github.com/inplayer-org/frontend-intership/blob/master/images/WeatherApp-screen-1.jpg?sanitize=true&raw=true" />
 <img src="https://github.com/inplayer-org/frontend-intership/blob/master/images/WeatherApp-screen-2.jpg?sanitize=true&raw=true" />
 <img src="https://github.com/inplayer-org/frontend-intership/blob/master/images/WeatherApp-screen-3.jpg?sanitize=true&raw=true" />
