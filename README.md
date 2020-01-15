@@ -47,9 +47,7 @@ You are alowed to use different photos, the website should be responsive and loo
 
 ## Project 2: Weather Forecast App
 
-### Description of the assignment
-
-### Acceptance criteria:
+### Description and acceptance criteria:
 - Application should provide 7-day (or less if there any API restrictions) forecast starting from today
 - City can be selected by name or current geo-coordinates can be used
 - In the list temperature should be shown for a daytime, icons should be neutral
