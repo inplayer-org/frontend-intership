@@ -64,4 +64,4 @@ Before you start:
 - weather icons available here https://erikflowers.github.io/weather-icons/
 - other icons – https://material.io/icons/
 
-[Demo](http://react-weather-forecast-app.surge.sh/)
+Demo: http://react-weather-forecast-app.surge.sh/
