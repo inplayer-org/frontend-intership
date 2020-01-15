@@ -45,7 +45,7 @@ You are alowed to use different photos, the website should be responsive and loo
 - [React Official Docs](https://reactjs.org/docs/getting-started.html)
 - [React JS - React Enlightenment](https://www.reactenlightenment.com)
 
-## Project 2: Weather Forecast
+## Project 2: Weather Forecast App
 
 ### Description of the assignment
 
