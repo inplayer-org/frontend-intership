@@ -44,3 +44,24 @@ You are alowed to use different photos, the website should be responsive and loo
 
 - [React Official Docs](https://reactjs.org/docs/getting-started.html)
 - [React JS - React Enlightenment](https://www.reactenlightenment.com)
+
+## Project 2: Weather Forecast
+
+### Description of the assignment
+
+Acceptance criteria:
+- Application should provide 7-day (or less if there any API restrictions) forecast starting from today
+- City can be selected by name or current geo-coordinates can be used
+- In the list temperature should be shown for a daytime, icons should be neutral
+- In the section "Current weather" the temperature and icon depend on the current time
+- According to changes in control "Scale's type" (C or F) convert temperature from Celsius to Fahrenheit or vice versa
+- If page was reloaded then application should restore state (if any city was selected by name or coordinates, it should be shown saved forecast, but in background, app should ask about new data)
+- Make it responsive (suggest your option for mobile)
+
+Before you start:
+- font family – Roboto;
+- you can use this API http://openweathermap.org/api or any other, or create mock API on your own;
+- weather icons available here https://erikflowers.github.io/weather-icons/
+- other icons – https://material.io/icons/
+
+[Demo](http://react-weather-forecast-app.surge.sh/)
