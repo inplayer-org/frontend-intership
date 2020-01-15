@@ -48,7 +48,7 @@ You are alowed to use different photos, the website should be responsive and loo
 ## Project 2: Weather Forecast App
 
 ### Description and acceptance criteria
-- Application should provide 7-day (or less if there any API restrictions) forecast starting from today
+- Application should provide 7-day (or less if there are any API restrictions) forecast starting from today
 - City can be selected by name or current geo-coordinates can be used
 - In the list temperature should be shown for a daytime, icons should be neutral
 - In the section "Current weather" the temperature and icon depend on the current time
