@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 
 import './home-page.styles.scss';
-import HomeContainer from '../../components/home-container/home-container.component'
+
+import InputField from '../../components/input-field/input-field.component';
 
 class HomePage extends Component {
-	state = {
-		city: ''
-	};
-
-	handleChange = (event) => {
-		const city = event.target;
-
-		this.setState({ city: city });
-	};
-
 	render() {
 		return (
 			<div className="home-page">
-				<HomeContainer/>
+				<div className="home-container">
+					<InputField
+						name="city"
+						type="city"
+						handleChange={this.props.handleChange}
+						value={this.props.city}
+						label="City"
+					/>
+				</div>
 			</div>
 		);
 	}

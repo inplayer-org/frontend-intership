@@ -2,11 +2,14 @@ import React from 'react';
 
 import './input-field.styles.scss';
 
-const InputField = ({handleChange, label, ...otherProps}) => {
-	return (
-		<div className="group">
-			<input type="text" className="input-field" onChange={handleChange}/>
-			{label ? (
+const InputField = ({ handleChange, label, ...otherProps }) => (
+	<div className="group">
+		<input
+			className="input-field"
+			onChange={handleChange}
+			{...otherProps}
+		/>
+		{label ? (
 			<label
 				className={`${otherProps.value.length
 					? 'shrink'
@@ -15,8 +18,7 @@ const InputField = ({handleChange, label, ...otherProps}) => {
 				{label}
 			</label>
 		) : null}
-		</div>
-	);
-};
+	</div>
+);
 
 export default InputField;
