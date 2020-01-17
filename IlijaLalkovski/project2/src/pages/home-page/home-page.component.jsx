@@ -9,13 +9,15 @@ class HomePage extends Component {
 		return (
 			<div className="home-page">
 				<div className="home-container">
-					<InputField
-						name="city"
-						type="city"
-						handleChange={this.props.handleChange}
-						value={this.props.city}
-						label="City"
-					/>
+					<form onSubmit={this.props.handleSubmit}>
+						<InputField
+							name="city"
+							type="city"
+							handleChange={this.props.handleChange}
+							value={this.props.city}
+							label="City"
+						/>
+					</form>
 				</div>
 			</div>
 		);
