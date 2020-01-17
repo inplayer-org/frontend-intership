@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './App.css';
 // import { Switch, Route } from 'react-router-dom';
 
+import axios from 'axios';
+
 import HomePage from './pages/home-page/home-page.component';
 
 class App extends Component {
@@ -17,16 +19,20 @@ class App extends Component {
 	};
 
 	componentDidMount() {
-		fetch('api.openweathermap.org/data/2.5/weather?q=Skopje', {
-			"method": "GET",
-			"headers": {
-				"APPID": "5f33ab7658849061c4136c937a34f5e4"
+		axios({
+			method: 'get',
+			url:
+				'api.openweathermap.org/data/2.5/weather?q=Skopje&APPID=5f33ab7658849061c4136c937a34f5e4'
+		}).then(
+			(response) => {
+				console.log(response);
+			},
+			(error) => {
+				console.log(error);
 			}
-		})	
-		.then(response => response.json())
-		.then(forecast => console.log(forecast))
+		);
 	}
-	
+
 	render() {
 		return (
 			<div className="App">
@@ -34,7 +40,8 @@ class App extends Component {
 				<HomePage
 					handleChange={(event) => {
 						this.handleChange(event);
-					}} {...this.state}
+					}}
+					{...this.state}
 				/>
 			</div>
 		);
