@@ -1,9 +1,11 @@
 import React from 'react'
 
-const CityWeather = () => {
+const CityWeather = (props) => {
+    console.log(props);
+    const { cityName } = props.match.params;
     return (
         <div>
-            City Weather component
+            City Weather component for {cityName}
         </div>
     );
 }

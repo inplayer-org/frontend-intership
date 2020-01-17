@@ -1,6 +1,7 @@
 import React from 'react'
 
-const CityNotFound = () => {
+const CityNotFound = (props) => {
+    console.log(props);
     return (
         <div>
             CityNotFound component

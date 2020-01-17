@@ -7,11 +7,15 @@ import CityNotFound from "./components/pages/CityNotFound";
 const App = () => {
     return (
         <div>
-          <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route exact path="/forecast/:cityName" component={CityWeather} />
-            <Route path="" component={CityNotFound} />
-          </Switch>
+            <Switch>
+                <Route exact path="/" component={HomePage} />
+                <Route
+                    exact
+                    path="/forecast/:cityName"
+                    component={CityWeather}
+                />
+                <Route component={CityNotFound} />
+            </Switch>
         </div>
     );
 };
