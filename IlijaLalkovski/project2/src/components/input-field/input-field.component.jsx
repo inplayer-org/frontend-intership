@@ -2,9 +2,10 @@ import React from 'react';
 
 import './input-field.styles.scss';
 
-const InputField = ({ handleChange, label, ...otherProps }) => (
+const InputField = ({ handleChange, label, type = 'text', ...otherProps }) => (
 	<div className="group">
 		<input
+			type={type}
 			className="input-field"
 			onChange={handleChange}
 			{...otherProps}
