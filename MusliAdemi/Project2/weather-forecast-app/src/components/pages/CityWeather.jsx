@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 import { days } from '../../data/daysOfWeek'
 
@@ -19,7 +19,6 @@ const CityWeather = (props) => {
 
     const [showFarhenheit, setShowFarhenheit] = useState(false);
     const [showCelsius, setShowCelsius] = useState(true);
-    const [toggleFC, setToggleFC] = useState(false);
 
     const handleToggleF = () => {
         setShowFarhenheit(true);
@@ -49,7 +48,7 @@ const CityWeather = (props) => {
                 const dayTempInFarhenheit = Math.round(celsiusToFarhenheit(dayTempInCelsius))
                 return (
                     <div key={oneDayWeather.dt}>
-                        <img src={`http://openweathermap.org/img/wn/${icon}.png`} />
+                        <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt="weather-logo"/>
                         <p>{`${dayInStringFormat}`}</p>
                         <p>{showCelsius ? `${dayTempInCelsius} °C` : `${dayTempInFarhenheit} °F`} </p>
                     </div>
