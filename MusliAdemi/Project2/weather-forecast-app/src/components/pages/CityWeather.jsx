@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 import { days } from '../../data/daysOfWeek'
 
 const getDayOfWeekAsString = (oneDayWeather) => {
@@ -36,27 +37,74 @@ const CityWeather = (props) => {
     }
 
     return (
-        <div style={{ textAlign: "center" }}>
-            <h1>City Weather for {capitalizedCityName}</h1>
-            <button onClick={handleToggleF} disabled={showFarhenheit}>F</button>
-            <button onClick={handleToggleC} disabled={showCelsius}>C</button>
-            {/* iterate through 1 week list of data */}
-            {cityData.list.map(oneDayWeather => {
-                const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
-                const icon = oneDayWeather.weather[0].icon;
-                const dayTempInCelsius = Math.round(oneDayWeather.temp.day);
-                const dayTempInFarhenheit = Math.round(celsiusToFarhenheit(dayTempInCelsius))
-                return (
-                    <div key={oneDayWeather.dt}>
-                        <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt="weather-logo"/>
-                        <p>{`${dayInStringFormat}`}</p>
-                        <p>{showCelsius ? `${dayTempInCelsius} °C` : `${dayTempInFarhenheit} °F`} </p>
-                    </div>
-                );
-            })}
+        <Background>
+            <Wrapper>
+                <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
+                {/* iterate through 1 week list of data */}
+                <button onClick={handleToggleF} disabled={showFarhenheit}>F</button>
+                <button onClick={handleToggleC} disabled={showCelsius}>C</button>
+                <OneWeekWeather>
+                    {cityData.list.map(oneDayWeather => {
+                        const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
+                        const icon = oneDayWeather.weather[0].icon;
+                        const dayTempInCelsius = Math.round(oneDayWeather.temp.day);
+                        const dayTempInFarhenheit = Math.round(celsiusToFarhenheit(dayTempInCelsius))
+                        return (
+                            <div key={oneDayWeather.dt}>
+                                <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt="weather-logo" />
+                                <p>{`${dayInStringFormat}`}</p>
+                                <p>{showCelsius ? `${dayTempInCelsius} °C` : `${dayTempInFarhenheit} °F`} </p>
+                            </div>
+                        );
+                    })}
+                </OneWeekWeather>
+            </Wrapper>
             <Link to={'/'}>Go back</Link>
-        </div>
+        </Background>
     );
 }
+
+export const Background = styled.div`
+    display: grid;
+    min-height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    background: rgb(50, 119, 163);
+    background: linear-gradient(
+        90deg,
+        rgba(50, 119, 163, 1) 8%,
+        rgba(71, 220, 221, 1) 100%
+    );
+`
+
+const Wrapper = styled.div`
+    align-self: center;
+    justify-self: center;
+`
+
+const OneWeekWeather = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 20px;
+    
+    & > * {
+        /* border: 1px solid black; */
+        min-width: 100px;
+        text-align: center;
+        background-color: rgba(255,255,255,0.2);
+    }
+
+`
+
+const CityDescription = styled.div`
+    font-size: 2em;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    color: white;
+`
 
 export default CityWeather;

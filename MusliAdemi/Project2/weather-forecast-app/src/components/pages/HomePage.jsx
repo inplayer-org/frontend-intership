@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
+import {Background} from './CityWeather'
 
 const HomePage = props => {
     const [cityName, setCityName] = useState("");
@@ -50,22 +51,6 @@ const HomePage = props => {
         </Background>
     );
 };
-
-const Background = styled.div`
-    display: grid;
-    min-height: 100%;
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-
-    background: rgb(50, 119, 163);
-    background: linear-gradient(
-        90deg,
-        rgba(50, 119, 163, 1) 8%,
-        rgba(71, 220, 221, 1) 100%
-    );
-`;
 
 const Wrapper = styled.div`
     display: grid;
