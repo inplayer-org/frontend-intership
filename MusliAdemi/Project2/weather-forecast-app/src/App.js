@@ -14,7 +14,7 @@ const App = () => {
                     path="/forecast/:cityName"
                     component={CityWeather}
                 />
-                <Route exact path="" component={CityNotFound} />
+                <Route exact component={CityNotFound} />
             </Switch>
         </div>
     );
