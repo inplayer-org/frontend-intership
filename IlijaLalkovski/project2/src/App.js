@@ -5,8 +5,8 @@ import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
 import HomePage from './pages/home-page/home-page.component';
-
 import ForecastPage from './pages/forecast-page/forecast-page.component';
+import ErrorPage from './pages/error-page/error-page.component';
 
 class App extends Component {
 	state = {
@@ -34,8 +34,9 @@ class App extends Component {
 		try {
 			const response = await axios({
 				method: 'get',
-				url: `http://api.openweathermap.org/data/2.5/weather?q=${this
-					.state.city}&APPID=5f33ab7658849061c4136c937a34f5e4`
+				url: `http://api.openweathermap.org/data/2.5/forecast?q=${this
+					.state
+					.city}&units=metric&APPID=5f33ab7658849061c4136c937a34f5e4&cnt=7`
 			});
 
 			this.setState({
@@ -58,6 +59,7 @@ class App extends Component {
 						path="/"
 						render={(props) => (
 							<HomePage
+								exact
 								{...props}
 								handleSubmit={this.handleSubmit}
 								handleChange={this.handleChange}
@@ -66,11 +68,13 @@ class App extends Component {
 						)}
 					/>
 					<Route
+						exact
 						path="/forecast"
 						render={(props) => (
 							<ForecastPage {...props} {...this.state} />
 						)}
 					/>
+					<Route exact path="/404notfound" component={ErrorPage} />
 				</Switch>
 			</div>
 		);

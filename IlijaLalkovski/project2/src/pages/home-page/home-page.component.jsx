@@ -11,7 +11,7 @@ class HomePage extends Component {
 		const { city, isSuccess, isFail } = this.props;
 
 		if (isFail) {
-			//t
+			return <Redirect to={`/404notfound`} />;
 		}
 
 		if (isSuccess) {
