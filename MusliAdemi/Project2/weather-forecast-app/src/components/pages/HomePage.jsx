@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import CityWeather from './CityWeather';
 
 
 const HomePage = (props) => {
@@ -18,7 +19,11 @@ const HomePage = (props) => {
                     response = await axios(celsiusAPILink);
                     setCelsiusData(response.data);
                     console.log(response.data);
-                    props.history.push(`/forecast/${cityName}`)
+                    props.history.push({
+                        pathname: `/forecast/${cityName}`,
+                        search: `${cityName}`,
+                        state: { cityData: response.data }
+                    })
                 } catch (e) {
                     console.log("ERROR");
                     props.history.push(`${cityName}`)
