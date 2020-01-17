@@ -1,26 +1,19 @@
-import React from 'react';
-import './App.css';
-import logo from './logo.svg';
+import React from "react";
+import { Route, Switch } from "react-router-dom";
+import HomePage from "./components/pages/HomePage";
+import CityWeather from "./components/pages/CityWeather";
+import CityNotFound from "./components/pages/CityNotFound";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const App = () => {
+    return (
+        <div>
+          <Switch>
+            <Route exact path="/" component={HomePage} />
+            <Route exact path="/forecast/:cityName" component={CityWeather} />
+            <Route path="" component={CityNotFound} />
+          </Switch>
+        </div>
+    );
+};
 
 export default App;
