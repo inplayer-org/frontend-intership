@@ -50,13 +50,17 @@ class App extends Component {
 		}
 	};
 
+	clearState = () => {
+		this.setState({ isFail: false, city: '' });
+	};
+
 	render() {
 		return (
 			<div className="App">
 				<Switch>
 					<Route
 						exact
-						path="/"
+						path="/home"
 						render={(props) => (
 							<HomePage
 								exact
@@ -68,13 +72,20 @@ class App extends Component {
 						)}
 					/>
 					<Route
-						exact
 						path="/forecast"
 						render={(props) => (
 							<ForecastPage {...props} {...this.state} />
 						)}
 					/>
-					<Route exact path="/404notfound" component={ErrorPage} />
+					<Route
+						path="/404notfound"
+						render={(props) => (
+							<ErrorPage
+								{...props}
+								clearState={this.clearState}
+							/>
+						)}
+					/>
 				</Switch>
 			</div>
 		);
