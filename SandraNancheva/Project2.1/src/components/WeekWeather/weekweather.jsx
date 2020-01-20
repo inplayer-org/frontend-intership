@@ -1,4 +1,5 @@
 import React from 'react';
+import './weekweather.scss'
 
 const WeekWeather = ({ day, units}) => {
     const date = new Date(day.dt * 1000);
@@ -11,7 +12,7 @@ const WeekWeather = ({ day, units}) => {
     console.log(day.weather[0].icon)
     const dayAsString = date.toLocaleDateString(undefined,options);
 	return (
-		<div>
+		<div className="day">
 		    <h3>{dayAsString}</h3>
             <img src={icon} alt="icon"/>
             <h3>{day.temp.day} {units==='metric'? 'C': 'F'}</h3>
