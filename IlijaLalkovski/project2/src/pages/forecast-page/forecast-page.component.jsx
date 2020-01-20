@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 
 import './forecast-page.styles.scss';
 
+import CardList from '../../components/card-list/card-list.component';
+
 class ForecastPage extends Component {
 	state = {
 		forecast: {
@@ -256,36 +258,50 @@ class ForecastPage extends Component {
 			}
 		}
 	};
-	componentDidMount() {
-		console.log(this.state.forecast.list[0].weather[0].description);
+	componentDidMount() {}
+
+	getFormattedDate(date) {
+		const newDate = new Date(date);
+		const options = {
+			weekday: 'short',
+			year: 'numeric',
+			month: 'short',
+			day: 'numeric'
+		};
+		return new Intl.DateTimeFormat('en-US', options).format(newDate);
 	}
 
 	render() {
 		const { city, list } = this.state.forecast;
-		const iconUrl = `http://openweathermap.org/img/wn/${list[0].weather[0].icon}@2x.png`
+		const main = list[0].main;
+		const weather = list[0].weather[0];
+		const iconUrl = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
 
 		return (
 			<div className="forecast-page">
 				<div className="forecast-container">
 					<h1 className="city-name">{city.name}</h1>
-					<h2 className="date">{list[0].dt_txt}</h2>
+					<h2 className="date">
+						{this.getFormattedDate(list[0].dt_txt)}
+					</h2>
 					<div className="temp">
 						<div className="main-temp">
-							<img src={iconUrl} alt={list[0].weather[0].description}/>
-							{list[0].main.temp}°C{list[0].weather.icon}
+							<img src={iconUrl} alt={weather.description} />
+							{Number(main.temp.toFixed(0))}°C
 						</div>
 						<div className="temp-details">
 							<p className="feels-like">
-								Feels like: {list[0].main.feels_like}°C
+								Feels like: {Number(main.feels_like.toFixed(0))}°C
 							</p>
 							<p className="temp-min">
-								Min temp: {list[0].main.temp_min}°C
+								Min temp: {Number(main.temp_min.toFixed(0))}°C
 							</p>
 							<p className="temp-max">
-								Max temp: {list[0].main.temp_max}°C
+								Max temp: {Number(main.temp_max.toFixed(0))}°C
 							</p>
 						</div>
 					</div>
+					<CardList {...this.state}/>
 				</div>
 			</div>
 		);
