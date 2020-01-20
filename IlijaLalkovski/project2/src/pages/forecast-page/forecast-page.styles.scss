@@ -1,17 +1,54 @@
 .forecast-page {
-    background-color: #333344;
-    display: flex;
-    height: 100vh;
-    align-items: center;
-    justify-content: center;
-    
-    .forecast-container {
-        display: flex;
-        height: 70vh;
-        width: 70vw;
-        background-color: #4747a5;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-    }
+	background-color: #333344;
+	color: #ffffff;
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+
+	.forecast-container {
+		display: flex;
+		height: 600px;
+		width: 800px;
+		background-color: #4747a5;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		.city-name {
+			display: flex;
+			margin: 0;
+			padding: 0.5em 1em;
+		}
+
+		.date {
+			font-size: 1.3rem;
+			display: flex;
+			margin: 0;
+		}
+
+		.temp {
+			display: flex;
+			justify-items: center;
+
+			.main-temp {
+				display: flex;
+				font-size: 7rem;
+				padding: 7vw 2vw;
+				// justify-self: center;
+				align-items: center;
+
+				img {
+                    margin: 0;
+                    padding-bottom: 0;
+					width: 6rem;
+					height: 6rem;
+				}
+			}
+
+			.temp-details {
+				align-self: center;
+			}
+		}
+	}
 }

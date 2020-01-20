@@ -60,7 +60,7 @@ class App extends Component {
 				<Switch>
 					<Route
 						exact
-						path="/home"
+						path="/"
 						render={(props) => (
 							<HomePage
 								exact
