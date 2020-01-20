@@ -12,9 +12,9 @@ const WeekWeather = ({ day, units}) => {
     const dayAsString = date.toLocaleDateString(undefined,options);
 	return (
 		<div>
-		    <h1>{dayAsString}</h1>
+		    <h3>{dayAsString}</h3>
             <img src={icon} alt="icon"/>
-            <h1>{day.temp.day} {units==='metric'? 'C': 'F'}</h1>
+            <h3>{day.temp.day} {units==='metric'? 'C': 'F'}</h3>
         </div>
        
 	);

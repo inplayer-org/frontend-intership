@@ -1,4 +1,8 @@
 .header {
     width: 50vw;
-    
+    .top {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+    }
 }
