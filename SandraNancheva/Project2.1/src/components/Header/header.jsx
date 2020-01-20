@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import ViewInfo from '../ViewInfo/viewinfo';
+import './header.scss'
 
 
 const Header = ({ data, handleTemp, units }) => {
@@ -8,7 +9,8 @@ const Header = ({ data, handleTemp, units }) => {
 	console.log(data);
 
 	return (
-		<div>
+		
+		<div className="header">
 			<button onClick={handleTemp}>{units === 'metric' ? 'C' : 'F'}</button>
 			<Link to="/">Home Page</Link>
 			<ViewInfo data={data} />

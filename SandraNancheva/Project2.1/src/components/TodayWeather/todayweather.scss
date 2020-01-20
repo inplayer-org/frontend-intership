@@ -1,0 +1,13 @@
+.todayweather {
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+
+
+    .left-side {
+        width: 24vw;
+    }
+    .right-side {
+        width: 24vw;
+    }
+}

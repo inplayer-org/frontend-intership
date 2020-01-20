@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorPage from '../errorpage/errorpage'
 import Header from '../../components/Header/header';
 import TodayWeather from '../../components/TodayWeather/todayweather';
 import Footer from '../../components/Footer/footer'
@@ -12,7 +13,8 @@ class MainPage extends Component {
 		this.state = {
 			location: '',
 			data: [],
-			units: 'imperial'
+			units: 'imperial',
+			errorMsg: ''
 		};
 	}
 
@@ -22,7 +24,8 @@ class MainPage extends Component {
 				`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${location.city}`
 			)
 				.then((response) => response.json())
-				.then((data) => this.setState({ data: data }));
+				.then((data) => this.setState({ data: data }))
+				.catch((error) => console.log(error));
 		} else {
 			fetch(
 				`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&lat=${location.lat}&lon=${location.lon}`
@@ -51,11 +54,20 @@ class MainPage extends Component {
 	render() {
 		// const icon = `http://openweathermap.org/img/wn/${faiudfa}.png`
 		return (
-			<div className="mainpage">
-				<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
-				<TodayWeather data={this.state.data} units={this.state.units} />
-                <Footer data={this.state.data} units={this.state.units}/>
-			</div>
+			
+			this.state.data.cod==='404'? 
+				
+			<ErrorPage /> :
+			
+			<div className="mainpage">  
+					<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
+					<TodayWeather data={this.state.data} units={this.state.units} />
+					<Footer data={this.state.data} units={this.state.units}/>
+				 </div>
+
+			 
+				
+			
 		);
 	}
 }
