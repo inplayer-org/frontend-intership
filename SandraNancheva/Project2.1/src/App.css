@@ -1,13 +1,13 @@
 body {
-  background: rgb(252, 129, 109);
+  background:#83001D;
   font-family: Roboto;
+  width: 100vmax;
+  height: 100vmax;
 }
 .App {
+  
+  margin-top: 200px;
  
-  display: flex;
-  justify-content: center;
-  align-items: center;
-	
 }
 
 /* .App-logo {

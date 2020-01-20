@@ -1,11 +1,12 @@
 import React from 'react';
+import './inputcity.scss'
 
 import { withRouter } from 'react-router-dom';
 
 const InputCity = (props) => ( 
-	<div>
+	<div className="inputform">
 		<form onSubmit={props.handleSubmit}>
-			<input type="text" onChange={props.handleChange} />
+			<input className="input" type="text" onChange={props.handleChange} placeholder="City" />
 		</form>
 	</div>
 )

@@ -3,6 +3,7 @@ import Header from '../../components/Header/header';
 import TodayWeather from '../../components/TodayWeather/todayweather';
 import Footer from '../../components/Footer/footer'
 import queryString from 'query-string';
+import './mainpage.scss'
 
 class MainPage extends Component {
 	constructor(props) {
@@ -50,7 +51,7 @@ class MainPage extends Component {
 	render() {
 		// const icon = `http://openweathermap.org/img/wn/${faiudfa}.png`
 		return (
-			<div>
+			<div className="mainpage">
 				<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
 				<TodayWeather data={this.state.data} units={this.state.units} />
                 <Footer data={this.state.data} units={this.state.units}/>

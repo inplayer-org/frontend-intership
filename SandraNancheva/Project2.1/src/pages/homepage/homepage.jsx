@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
-import InputCity from '../../components/InputCity/InputCIty';
+import InputCity from '../../components/InputCity/inputcity';
 import CurrentLocation from '../../components/CurrentLocation/currentlocation';
 import './homepage.scss';
 
@@ -39,7 +39,7 @@ class HomePage extends Component {
 			<div className="homepage">
 				{this.state.errorMsg ? <span>Error Location</span> : null}
 				<InputCity handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
-				<span>or</span>
+				<span className='text'>or</span>
 				<CurrentLocation handleClick={this.handleClick} />
 			</div>
 		);
