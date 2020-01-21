@@ -34,9 +34,9 @@ class App extends Component {
 		try {
 			const response = await axios({
 				method: 'get',
-				url: `http://api.openweathermap.org/data/2.5/forecast?q=${this
+				url: `http://api.openweathermap.org/data/2.5//forecast/daily?units=metric&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${this
 					.state
-					.city}&units=metric&APPID=5f33ab7658849061c4136c937a34f5e4&cnt=6`
+					.city}`
 			});
 
 			this.setState({

@@ -7,224 +7,251 @@ import CardList from '../../components/card-list/card-list.component';
 class ForecastPage extends Component {
 	state = {
 		forecast: {
-			cod: '200',
-			message: 0,
-			cnt: 7,
-			list: [
-				{
-					dt: 1579532400,
-					main: {
-						temp: 0.34,
-						feels_like: -4.04,
-						temp_min: 0.34,
-						temp_max: 2.39,
-						pressure: 1041,
-						sea_level: 1041,
-						grnd_level: 992,
-						humidity: 55,
-						temp_kf: -2.05
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01d'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 2.16,
-						deg: 334
-					},
-					sys: {
-						pod: 'd'
-					},
-					dt_txt: '2020-01-20 15:00:00'
-				},
-				{
-					dt: 1579543200,
-					main: {
-						temp: -2.63,
-						feels_like: -6.24,
-						temp_min: -2.63,
-						temp_max: -1.09,
-						pressure: 1043,
-						sea_level: 1043,
-						grnd_level: 993,
-						humidity: 71,
-						temp_kf: -1.54
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01n'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 1.13,
-						deg: 322
-					},
-					sys: {
-						pod: 'n'
-					},
-					dt_txt: '2020-01-20 18:00:00'
-				},
-				{
-					dt: 1579554000,
-					main: {
-						temp: -2.49,
-						feels_like: -6.07,
-						temp_min: -2.49,
-						temp_max: -1.47,
-						pressure: 1045,
-						sea_level: 1045,
-						grnd_level: 996,
-						humidity: 72,
-						temp_kf: -1.02
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01n'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 1.13,
-						deg: 302
-					},
-					sys: {
-						pod: 'n'
-					},
-					dt_txt: '2020-01-20 21:00:00'
-				},
-				{
-					dt: 1579564800,
-					main: {
-						temp: -2.25,
-						feels_like: -5.97,
-						temp_min: -2.25,
-						temp_max: -1.74,
-						pressure: 1044,
-						sea_level: 1044,
-						grnd_level: 995,
-						humidity: 72,
-						temp_kf: -0.51
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01n'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 1.35,
-						deg: 296
-					},
-					sys: {
-						pod: 'n'
-					},
-					dt_txt: '2020-01-21 00:00:00'
-				},
-				{
-					dt: 1579575600,
-					main: {
-						temp: -2.17,
-						feels_like: -5.45,
-						temp_min: -2.17,
-						temp_max: -2.17,
-						pressure: 1044,
-						sea_level: 1044,
-						grnd_level: 994,
-						humidity: 72,
-						temp_kf: 0
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01n'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 0.74,
-						deg: 325
-					},
-					sys: {
-						pod: 'n'
-					},
-					dt_txt: '2020-01-21 03:00:00'
-				},
-				{
-					dt: 1579586400,
-					main: {
-						temp: -2.65,
-						feels_like: -6,
-						temp_min: -2.65,
-						temp_max: -2.65,
-						pressure: 1043,
-						sea_level: 1043,
-						grnd_level: 994,
-						humidity: 73,
-						temp_kf: 0
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01d'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 0.8,
-						deg: 346
-					},
-					sys: {
-						pod: 'd'
-					},
-					dt_txt: '2020-01-21 06:00:00'
-				}
-			],
 			city: {
 				id: 785842,
 				name: 'Skopje',
 				coord: {
-					lat: 42,
-					lon: 21.4333
+					lon: 21.4333,
+					lat: 42
 				},
 				country: 'MK',
 				population: 474889,
-				timezone: 3600,
-				sunrise: 1579499847,
-				sunset: 1579534339
-			}
+				timezone: 3600
+			},
+			cod: '200',
+			message: 1.5051796,
+			cnt: 7,
+			list: [
+				{
+					dt: 1579600800,
+					sunrise: 1579586210,
+					sunset: 1579620813,
+					temp: {
+						day: 1.65,
+						min: -0.25,
+						max: 4.16,
+						night: -0.25,
+						eve: 2.73,
+						morn: 1.65
+					},
+					feels_like: {
+						day: -1.28,
+						night: -3.47,
+						eve: -0.49,
+						morn: -1.28
+					},
+					pressure: 1043,
+					humidity: 56,
+					weather: [
+						{
+							id: 800,
+							main: 'Clear',
+							description: 'sky is clear',
+							icon: '01d'
+						}
+					],
+					speed: 0.28,
+					deg: 97,
+					clouds: 0
+				},
+				{
+					dt: 1579687200,
+					sunrise: 1579672571,
+					sunset: 1579707287,
+					temp: {
+						day: 3.66,
+						min: -1.05,
+						max: 7.08,
+						night: 2.15,
+						eve: 4.56,
+						morn: -1.05
+					},
+					feels_like: {
+						day: 0.55,
+						night: -1.49,
+						eve: 1.9,
+						morn: -3.88
+					},
+					pressure: 1032,
+					humidity: 46,
+					weather: [
+						{
+							id: 800,
+							main: 'Clear',
+							description: 'sky is clear',
+							icon: '01d'
+						}
+					],
+					speed: 0.45,
+					deg: 149,
+					clouds: 0
+				},
+				{
+					dt: 1579773600,
+					sunrise: 1579758929,
+					sunset: 1579793761,
+					temp: {
+						day: 5.46,
+						min: 0.52,
+						max: 7.89,
+						night: 0.52,
+						eve: 5.91,
+						morn: 1.08
+					},
+					feels_like: {
+						day: 2.12,
+						night: -2.36,
+						eve: 2.84,
+						morn: -2.39
+					},
+					pressure: 1031,
+					humidity: 42,
+					weather: [
+						{
+							id: 800,
+							main: 'Clear',
+							description: 'sky is clear',
+							icon: '01d'
+						}
+					],
+					speed: 0.84,
+					deg: 71,
+					clouds: 0
+				},
+				{
+					dt: 1579860000,
+					sunrise: 1579845286,
+					sunset: 1579880237,
+					temp: {
+						day: 2.68,
+						min: -1.12,
+						max: 6.4,
+						night: 0.87,
+						eve: 4.68,
+						morn: -0.71
+					},
+					feels_like: {
+						day: -1.07,
+						night: -1.84,
+						eve: 1.69,
+						morn: -3.84
+					},
+					pressure: 1033,
+					humidity: 59,
+					weather: [
+						{
+							id: 800,
+							main: 'Clear',
+							description: 'sky is clear',
+							icon: '01d'
+						}
+					],
+					speed: 1.7,
+					deg: 88,
+					clouds: 0
+				},
+				{
+					dt: 1579946400,
+					sunrise: 1579931641,
+					sunset: 1579966712,
+					temp: {
+						day: 3.44,
+						min: -0.25,
+						max: 5.7,
+						night: 2.24,
+						eve: 4.41,
+						morn: -0.13
+					},
+					feels_like: {
+						day: 0.8,
+						night: -0.28,
+						eve: 2.09,
+						morn: -2.91
+					},
+					pressure: 1028,
+					humidity: 75,
+					weather: [
+						{
+							id: 804,
+							main: 'Clouds',
+							description: 'overcast clouds',
+							icon: '04d'
+						}
+					],
+					speed: 0.82,
+					deg: 65,
+					clouds: 100
+				},
+				{
+					dt: 1580032800,
+					sunrise: 1580017994,
+					sunset: 1580053189,
+					temp: {
+						day: 3.73,
+						min: 1.08,
+						max: 6.37,
+						night: 3.88,
+						eve: 5.34,
+						morn: 1.22
+					},
+					feels_like: {
+						day: 1.4,
+						night: 2.11,
+						eve: 3.02,
+						morn: -1.23
+					},
+					pressure: 1027,
+					humidity: 77,
+					weather: [
+						{
+							id: 500,
+							main: 'Rain',
+							description: 'light rain',
+							icon: '10d'
+						}
+					],
+					speed: 0.51,
+					deg: 82,
+					clouds: 100,
+					rain: 1.19
+				},
+				{
+					dt: 1580119200,
+					sunrise: 1580104345,
+					sunset: 1580139665,
+					temp: {
+						day: 6.59,
+						min: 3.1,
+						max: 9.31,
+						night: 5.21,
+						eve: 9.11,
+						morn: 3.69
+					},
+					feels_like: {
+						day: 4.4,
+						night: 3.04,
+						eve: 7.14,
+						morn: 1.89
+					},
+					pressure: 1025,
+					humidity: 75,
+					weather: [
+						{
+							id: 804,
+							main: 'Clouds',
+							description: 'overcast clouds',
+							icon: '04d'
+						}
+					],
+					speed: 0.85,
+					deg: 76,
+					clouds: 100
+				}
+			]
 		}
 	};
+
+
 	componentDidMount() {}
 
 	getFormattedDate(date) {
@@ -240,35 +267,39 @@ class ForecastPage extends Component {
 
 	render() {
 		const { city, list } = this.state.forecast;
-		const main = list[0].main;
+		const temp = list[0].temp;
 		const weather = list[0].weather[0];
 		const iconUrl = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
 
 		return (
 			<div className="forecast-page">
 				<div className="forecast-container">
+					
 					<h1 className="city-name">{city.name}</h1>
 					<h2 className="date">
-						{this.getFormattedDate(list[0].dt_txt)}
+						{this.getFormattedDate(list[0].dt*1000)}
 					</h2>
 					<div className="temp">
 						<div className="main-temp">
 							<img src={iconUrl} alt={weather.description} />
-							{Number(main.temp.toFixed(0))}°C
+							{Number(temp.day.toFixed(0))}°C
 						</div>
 						<div className="temp-details">
-							<p className="feels-like">
-								Feels like: {Number(main.feels_like.toFixed(0))}°C
+							<p>
+								Day: {Number(temp.day.toFixed(0))}°C
 							</p>
-							<p className="temp-min">
-								Min temp: {Number(main.temp_min.toFixed(0))}°C
+							<p>
+								Night: {Number(temp.night.toFixed(0))}°C
 							</p>
-							<p className="temp-max">
-								Max temp: {Number(main.temp_max.toFixed(0))}°C
+							<p>
+								Evening: {Number(temp.eve.toFixed(0))}°C
+							</p>
+							<p>
+								Morning: {Number(temp.morn.toFixed(0))}°C
 							</p>
 						</div>
 					</div>
-					<CardList {...this.state}/>
+					<CardList {...this.state} />
 				</div>
 			</div>
 		);
