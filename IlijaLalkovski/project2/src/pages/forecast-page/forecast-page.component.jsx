@@ -208,39 +208,6 @@ class ForecastPage extends Component {
 						pod: 'd'
 					},
 					dt_txt: '2020-01-21 06:00:00'
-				},
-				{
-					dt: 1579597200,
-					main: {
-						temp: 0.9,
-						feels_like: -1.99,
-						temp_min: 0.9,
-						temp_max: 0.9,
-						pressure: 1042,
-						sea_level: 1042,
-						grnd_level: 994,
-						humidity: 55,
-						temp_kf: 0
-					},
-					weather: [
-						{
-							id: 800,
-							main: 'Clear',
-							description: 'clear sky',
-							icon: '01d'
-						}
-					],
-					clouds: {
-						all: 0
-					},
-					wind: {
-						speed: 0.11,
-						deg: 130
-					},
-					sys: {
-						pod: 'd'
-					},
-					dt_txt: '2020-01-21 09:00:00'
 				}
 			],
 			city: {
