@@ -1,5 +1,5 @@
 .forecast-page {
-	background-color: #333344;
+	background-color: #1f314e;
 	color: #ffffff;
 	display: flex;
 	height: 100vh;
@@ -8,9 +8,9 @@
 
 	.forecast-container {
 		display: flex;
-		height: 600px;
-		width: 800px;
-		background-color: #4747a5;
+		height: 80vh;
+		width: 50vw;
+		background-color: #05889a;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
@@ -30,17 +30,17 @@
 		.temp {
 			display: flex;
 			justify-items: center;
+			height: 38%;
 
 			.main-temp {
 				display: flex;
 				font-size: 7rem;
 				padding: 7vw 2vw;
-				// justify-self: center;
 				align-items: center;
 
 				img {
-                    margin: 0;
-                    padding-bottom: 0;
+					margin: 0;
+					padding-bottom: 0;
 					width: 6rem;
 					height: 6rem;
 				}

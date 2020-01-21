@@ -36,7 +36,7 @@ class App extends Component {
 				method: 'get',
 				url: `http://api.openweathermap.org/data/2.5/forecast?q=${this
 					.state
-					.city}&units=metric&APPID=5f33ab7658849061c4136c937a34f5e4&cnt=7`
+					.city}&units=metric&APPID=5f33ab7658849061c4136c937a34f5e4&cnt=6`
 			});
 
 			this.setState({
