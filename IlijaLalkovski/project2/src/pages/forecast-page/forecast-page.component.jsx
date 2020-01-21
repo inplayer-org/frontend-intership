@@ -3,9 +3,11 @@ import React, { Component } from 'react';
 import './forecast-page.styles.scss';
 
 import CardList from '../../components/card-list/card-list.component';
+import ToggleSwitch from '../../components/toggle-switch/toggle-switch.component';
 
 class ForecastPage extends Component {
 	state = {
+		name: "temp-unit",
 		forecast: {
 			city: {
 				id: 785842,
@@ -251,7 +253,6 @@ class ForecastPage extends Component {
 		}
 	};
 
-
 	componentDidMount() {}
 
 	getFormattedDate(date) {
@@ -274,10 +275,12 @@ class ForecastPage extends Component {
 		return (
 			<div className="forecast-page">
 				<div className="forecast-container">
-					
+					<div className="toggle">
+						<ToggleSwitch id={this.state.name} Text={["°F", "°C"]}/>
+					</div>
 					<h1 className="city-name">{city.name}</h1>
 					<h2 className="date">
-						{this.getFormattedDate(list[0].dt*1000)}
+						{this.getFormattedDate(list[0].dt * 1000)}
 					</h2>
 					<div className="temp">
 						<div className="main-temp">
@@ -285,18 +288,10 @@ class ForecastPage extends Component {
 							{Number(temp.day.toFixed(0))}°C
 						</div>
 						<div className="temp-details">
-							<p>
-								Day: {Number(temp.day.toFixed(0))}°C
-							</p>
-							<p>
-								Night: {Number(temp.night.toFixed(0))}°C
-							</p>
-							<p>
-								Evening: {Number(temp.eve.toFixed(0))}°C
-							</p>
-							<p>
-								Morning: {Number(temp.morn.toFixed(0))}°C
-							</p>
+							<p>Day: {Number(temp.day.toFixed(0))}°C</p>
+							<p>Night: {Number(temp.night.toFixed(0))}°C</p>
+							<p>Evening: {Number(temp.eve.toFixed(0))}°C</p>
+							<p>Morning: {Number(temp.morn.toFixed(0))}°C</p>
 						</div>
 					</div>
 					<CardList {...this.state} />
