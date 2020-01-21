@@ -4,9 +4,6 @@ import ViewInfo from '../ViewInfo/viewinfo';
 import './header.scss';
 
 const Header = ({ data, handleTemp, units }) => {
-	const theCity = data.city;
-	console.log(data);
-
 	return (
 		<div className="header">
 			<div className="top">

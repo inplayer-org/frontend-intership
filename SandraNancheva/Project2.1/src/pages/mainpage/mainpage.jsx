@@ -1,37 +1,41 @@
 import React, { Component } from 'react';
-import ErrorPage from '../errorpage/errorpage'
+import ErrorPage from '../errorpage/errorpage';
 import Header from '../../components/Header/header';
 import TodayWeather from '../../components/TodayWeather/todayweather';
-import Footer from '../../components/Footer/footer'
+import Footer from '../../components/Footer/footer';
 import queryString from 'query-string';
-import './mainpage.scss'
+import './mainpage.scss';
 
 class MainPage extends Component {
-	constructor(props) {
-		super(props);
+	state = {
+		location: '',
+		data: [],
+		units: 'imperial',
+		errorMsg: ''
+	};
 
-		this.state = {
-			location: '',
-			data: [],
-			units: 'imperial',
-			errorMsg: ''
-		};
-	}
-
-	fetchWeather(location, units) {
+	async fetchWeather(location, units) {
 		if (Object.keys(location).length < 2) {
-			fetch(
-				`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${location.city}`
-			)
-				.then((response) => response.json())
-				.then((data) => this.setState({ data: data }))
-				.catch((error) => console.log(error));
+			try {
+				const response = await fetch(
+					`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${location.city}`
+				);
+				const data = await response.json();
+				console.log(data);
+				this.setState({ data });
+			} catch (err) {
+				console.log(err);
+			}
 		} else {
-			fetch(
-				`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&lat=${location.lat}&lon=${location.lon}`
-			)
-				.then((response) => response.json())
-				.then((data) => this.setState({ data: data }));
+			try {
+				const response = await fetch(
+					`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&lat=${location.lat}&lon=${location.lon}`
+				);
+				const data = await response.json();
+				this.state({ data });
+			} catch (err) {
+				console.log(err);
+			}
 		}
 	}
 
@@ -52,22 +56,14 @@ class MainPage extends Component {
 	};
 
 	render() {
-		// const icon = `http://openweathermap.org/img/wn/${faiudfa}.png`
-		return (
-			
-			this.state.data.cod==='404'? 
-				
-			<ErrorPage /> :
-			
-			<div className="mainpage">  
-					<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
-					<TodayWeather data={this.state.data} units={this.state.units} />
-					<Footer data={this.state.data} units={this.state.units}/>
-				 </div>
-
-			 
-				
-			
+		return this.state.data.cod === '404' ? (
+			<ErrorPage />
+		) : (
+			<div className="mainpage">
+				<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
+				<TodayWeather data={this.state.data} units={this.state.units} />
+				<Footer data={this.state.data} units={this.state.units} />
+			</div>
 		);
 	}
 }

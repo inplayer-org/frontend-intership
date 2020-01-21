@@ -1,8 +1,6 @@
 import React from 'react';
 import './inputcity.scss'
 
-import { withRouter } from 'react-router-dom';
-
 const InputCity = (props) => ( 
 	<div className="inputform">
 		<form onSubmit={props.handleSubmit}>
@@ -11,4 +9,4 @@ const InputCity = (props) => (
 	</div>
 )
 
-export default withRouter(InputCity);
+export default InputCity;

@@ -29,7 +29,7 @@ class HomePage extends Component {
 				this.props.history.push(`forecast?lat=${lat}&lon=${lon}`);
 			},
 			() => {
-				this.setState({ errorMsg: !this.state.errorMsg });
+				this.setState({ errorMsg: true });
 			}
 		);
 	};
