@@ -4,10 +4,12 @@ import './forecast-page.styles.scss';
 
 import CardList from '../../components/card-list/card-list.component';
 import ToggleSwitch from '../../components/toggle-switch/toggle-switch.component';
+import { NavLink } from 'react-router-dom';
 
 class ForecastPage extends Component {
 	state = {
 		name: 'temp-unit',
+		metrics: '°C',
 		forecast: {
 			city: {
 				id: 785842,
@@ -253,7 +255,17 @@ class ForecastPage extends Component {
 		}
 	};
 
-	componentDidMount() {}
+	componentDidMount() {
+		this.props.clearSuccess();
+	}
+
+	onChange = (event) => {
+		if (event.target.checked) {
+			this.setState({ metrics: '°F' });
+		} else {
+			this.setState({ metrics: '°C' });
+		}
+	};
 
 	getFormattedDate(date) {
 		const newDate = new Date(date);
@@ -275,10 +287,13 @@ class ForecastPage extends Component {
 		return (
 			<div className="forecast-page">
 				<div className="forecast-container">
+					<div className="home-link">
+						<NavLink to={`/`}>link</NavLink>
+					</div>
 					<div className="toggle">
 						<ToggleSwitch
-							id={this.state.name}
-							Text={[ '°F', '°C' ]}
+							id="this.state.name"
+							onChange={this.onChange}
 						/>
 					</div>
 					<div className="city-info">
@@ -291,13 +306,50 @@ class ForecastPage extends Component {
 					<div className="temp">
 						<div className="main-temp">
 							<img src={iconUrl} alt={weather.description} />
-							{Number(temp.day.toFixed(0))}°C
+							{this.state.metrics === '°F' ? (
+								Number((temp.day * 9 / 5 + 32).toFixed(0))
+							) : (
+								Number(temp.day.toFixed(0))
+							)}
+							{this.state.metrics}
 						</div>
 						<div className="temp-details">
-							<p>Day: {Number(temp.day.toFixed(0))}°C</p>
-							<p>Night: {Number(temp.night.toFixed(0))}°C</p>
-							<p>Evening: {Number(temp.eve.toFixed(0))}°C</p>
-							<p>Morning: {Number(temp.morn.toFixed(0))}°C</p>
+							<p>
+								Day:{' '}
+								{this.state.metrics === '°F' ? (
+									Number((temp.day * 9 / 5 + 32).toFixed(0))
+								) : (
+									Number(temp.day.toFixed(0))
+								)}
+								{this.state.metrics}
+							</p>
+							<p>
+								Night:{' '}
+								{this.state.metrics === '°F' ? (
+									Number((temp.night * 9 / 5 + 32).toFixed(0))
+								) : (
+									Number(temp.night.toFixed(0))
+								)}
+								{this.state.metrics}
+							</p>
+							<p>
+								Evening:{' '}
+								{this.state.metrics === '°F' ? (
+									Number((temp.eve * 9 / 5 + 32).toFixed(0))
+								) : (
+									Number(temp.eve.toFixed(0))
+								)}
+								{this.state.metrics}
+							</p>
+							<p>
+								Morning:{' '}
+								{this.state.metrics === '°F' ? (
+									Number((temp.morn * 9 / 5 + 32).toFixed(0))
+								) : (
+									Number(temp.morn.toFixed(0))
+								)}
+								{this.state.metrics}
+							</p>
 						</div>
 					</div>
 					<CardList {...this.state} />

@@ -12,7 +12,7 @@ const Card = (props) => {
 		<div className="card-container">
             <h2>{new Intl.DateTimeFormat('en-US', {weekday: 'short'}).format(date)}</h2>
 			<img src={iconUrl} alt={weather.description} />
-			<h2>{Number(temp.day.toFixed(0))}°C</h2>
+			<h2>{props.metrics === '°F' ? Number(((temp.day*9/5) + 32).toFixed(0)) : Number(temp.day.toFixed(0))}{props.metrics}</h2>
 		</div>
 	);
 };

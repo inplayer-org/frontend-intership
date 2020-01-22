@@ -13,7 +13,8 @@ class App extends Component {
 		city: '',
 		forecast: [],
 		isSuccess: false,
-		isFail: false
+		isFail: false,
+		metrics: 'metric'
 	};
 
 	handleChange = (event) => {
@@ -34,9 +35,10 @@ class App extends Component {
 		try {
 			const response = await axios({
 				method: 'get',
-				url: `http://api.openweathermap.org/data/2.5//forecast/daily?units=metric&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${this
+				url: `http://api.openweathermap.org/data/2.5//forecast/daily?units=${this
 					.state
-					.city}`
+					.metrics}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${this
+					.state.city}`
 			});
 
 			this.setState({
@@ -48,6 +50,10 @@ class App extends Component {
 				isFail: true
 			});
 		}
+	};
+
+	clearSuccess = () => {
+		this.setState({ isSuccess: false });
 	};
 
 	clearState = () => {
@@ -74,7 +80,11 @@ class App extends Component {
 					<Route
 						path="/forecast"
 						render={(props) => (
-							<ForecastPage {...props} {...this.state} />
+							<ForecastPage
+								{...props}
+								{...this.state}
+								clearSuccess={this.clearSuccess}
+							/>
 						)}
 					/>
 					<Route

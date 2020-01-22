@@ -1,5 +1,6 @@
 .error-page {
-	background-color: #333344;
+	background-color: #1f314e;
+	color: #ffffff;
 	display: flex;
 	height: 100vh;
 	align-items: center;
@@ -7,20 +8,16 @@
 
 	.error-container {
 		display: flex;
-		height: 70vh;
-		width: 70vw;
-		background-color: #4747a5;
+		height: 450px;
+		width: 750px;
+		background-color: #05889a;
+		justify-content: center;
 		align-items: center;
 		flex-direction: column;
 	}
 }
 
-h1 {
-	padding-top: 5%;
-}
-
 img {
-	// padding-top: 2%;
 	height: 50%;
 	padding-bottom: 2%;
 }
@@ -33,15 +30,15 @@ img {
 	line-height: 50px;
 	padding: 0 35px 0 35px;
 	font-size: 15px;
-	background-color: #333344;
+	background-color: #1f314e;
 	color: white;
 	text-transform: uppercase;
-	border: 1px solid #333344;
+	border: 1px solid #1f314e;
 	cursor: pointer;
 
 	&:hover {
-		background-color: #4747a5;
+		background-color: #05889a;
 		color: white;
-		border: 1px solid #333344;
+		border: 1px solid #1f314e;
 	}
 }

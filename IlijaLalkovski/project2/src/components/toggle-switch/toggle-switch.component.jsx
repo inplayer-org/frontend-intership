@@ -31,7 +31,7 @@ class ToggleSwitch extends Component {
           id={this.props.id}
           checked={this.props.currentValue}
           defaultChecked={this.props.defaultChecked}
-          onChange={this.onChange}
+          onChange={this.props.onChange}
           disabled={this.props.disabled}
         />
         {this.props.id ? (
@@ -42,8 +42,8 @@ class ToggleSwitch extends Component {
                   ? "toggle-switch-inner toggle-switch-disabled"
                   : "toggle-switch-inner"
               }
-              data-yes={this.props.Text[0]}
-              data-no={this.props.Text[1]}
+              data-yes="°F"
+              data-no="°C"
             />
             <span
               className={
@@ -57,16 +57,10 @@ class ToggleSwitch extends Component {
       </div>
     );
   }
-  // Set text for rendering.
-  static defaultProps = {
-    Text: ["°F", "°C"]
-  };
 }
 
 ToggleSwitch.propTypes = {
   id: PropTypes.string.isRequired,
-  Text: PropTypes.string.isRequired,
-  Name: PropTypes.string,
   onChange: PropTypes.func,
   defaultChecked: PropTypes.bool,
   Small: PropTypes.bool,

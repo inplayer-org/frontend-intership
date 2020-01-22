@@ -27,7 +27,6 @@
 			margin: 0;
 			display: flex;
 			flex-direction: column;
-			// justify-content: center;
 			align-items: center;
 
 			.city-name {
@@ -99,6 +98,7 @@
 			}
 
 			.temp {
+				transform: scale(0.9);
 				.main-temp {
 					padding: 2vw;
 					img {
@@ -137,7 +137,7 @@
 			}
 		}
 		.temp {
-			transform: scale(0.8);
+			transform: scale(0.8) !important;
 		}
 	}
 }
