@@ -7,7 +7,7 @@ import ToggleSwitch from '../../components/toggle-switch/toggle-switch.component
 
 class ForecastPage extends Component {
 	state = {
-		name: "temp-unit",
+		name: 'temp-unit',
 		forecast: {
 			city: {
 				id: 785842,
@@ -49,7 +49,7 @@ class ForecastPage extends Component {
 							id: 800,
 							main: 'Clear',
 							description: 'sky is clear',
-							icon: '01d'
+							icon: '04d'
 						}
 					],
 					speed: 0.28,
@@ -276,12 +276,18 @@ class ForecastPage extends Component {
 			<div className="forecast-page">
 				<div className="forecast-container">
 					<div className="toggle">
-						<ToggleSwitch id={this.state.name} Text={["°F", "°C"]}/>
+						<ToggleSwitch
+							id={this.state.name}
+							Text={[ '°F', '°C' ]}
+						/>
 					</div>
-					<h1 className="city-name">{city.name}</h1>
-					<h2 className="date">
-						{this.getFormattedDate(list[0].dt * 1000)}
-					</h2>
+					<div className="city-info">
+						<h1 className="city-name">{city.name}</h1>
+						<h2 className="date">
+							{this.getFormattedDate(list[0].dt * 1000)}
+						</h2>
+						<h3 className="current-forecast">{weather.main}</h3>
+					</div>
 					<div className="temp">
 						<div className="main-temp">
 							<img src={iconUrl} alt={weather.description} />
