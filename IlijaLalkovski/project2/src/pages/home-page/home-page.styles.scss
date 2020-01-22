@@ -1,18 +1,25 @@
 .home-page {
-    background-color: #1f314e;
+	background-color: #1f314e;
 	color: #ffffff;
 	display: flex;
 	height: 100vh;
 	align-items: center;
 	justify-content: center;
-    
-    .home-container {
-        display: flex;
+
+	.home-container {
+		display: flex;
 		height: 450px;
 		width: 750px;
 		background-color: #05889a;
 		justify-content: center;
 		align-items: center;
 		flex-direction: column;
-    }
+	}
+}
+
+@media (max-width: 750px) {
+	.home-container {
+		height: 100% !important;
+		width: 100% !important;
+	}
 }

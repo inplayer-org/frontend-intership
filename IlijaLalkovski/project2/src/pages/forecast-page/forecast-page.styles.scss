@@ -15,6 +15,19 @@
 		align-items: center;
 		flex-direction: column;
 
+		.home-link {
+			display: flex;
+			align-self: flex-start;
+			position: absolute;
+			img {
+				padding-bottom: 0;
+				width: 2.2rem;
+				height: 2.2rem;
+				padding-bottom: 380px;
+				padding-left: 20px;
+			}
+		}
+
 		.toggle {
 			position: absolute;
 			display: flex;
@@ -83,6 +96,13 @@
 			height: 100%;
 			width: 100%;
 
+			.home-link {
+				img {
+					padding-bottom: 520px;
+					padding-left: 20px;
+				}
+			}
+
 			.city-info {
 				.city-name {
 					padding-top: 0;
@@ -115,6 +135,16 @@
 	}
 
 	@media (max-width: 350px) {
+		.home-link {
+			img {
+				padding-bottom: 450px !important;
+			}
+		}
+
+		.toggle {
+			padding-bottom: 450px !important;
+			padding-right: 0px !important;
+		}
 		.city-info {
 			margin: 0em;
 			padding-top: 30px;
