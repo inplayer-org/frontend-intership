@@ -68,3 +68,5 @@ You are alowed to use different photos, the website should be responsive and loo
 <img src="https://github.com/inplayer-org/frontend-intership/blob/master/images/WeatherApp-screen-3.jpg?sanitize=true&raw=true" />
 
 ### Demo: http://react-weather-forecast-app.surge.sh/
+
+### Bonus: use Redux for state management
