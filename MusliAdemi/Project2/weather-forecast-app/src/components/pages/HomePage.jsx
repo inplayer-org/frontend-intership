@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import styled from "styled-components";
-import {Background} from './CityWeather'
+import { Background } from './CityWeather'
 
 const HomePage = props => {
     const [cityName, setCityName] = useState("");
@@ -24,8 +24,8 @@ const HomePage = props => {
                 });
             } catch (e) {
                 props.history.push({
-                    pathname: `error/${cityName}`,
-                    search: `${cityName}`
+                    pathname: `error/`,
+                    search: cityName
                 });
             }
         };

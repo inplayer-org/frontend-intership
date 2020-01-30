@@ -15,6 +15,7 @@ const CityWeather = (props) => {
 
     const { cityName } = props.match.params;
     const { cityData } = props.history.location.state;
+    const currentDayData = cityData.list[0];
 
     const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
@@ -40,10 +41,15 @@ const CityWeather = (props) => {
         <Background>
             <Wrapper>
                 <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
-                {/* iterate through 1 week list of data */}
-                <button onClick={handleToggleF} disabled={showFarhenheit}>F</button>
-                <button onClick={handleToggleC} disabled={showCelsius}>C</button>
+                <div>
+                    <button onClick={handleToggleF} disabled={showFarhenheit}>F</button>
+                    <button onClick={handleToggleC} disabled={showCelsius}>C</button>
+                </div>
+                <CurrentDayWeather>
+
+                </CurrentDayWeather>
                 <OneWeekWeather>
+                    {/* iterate through 1 week list of data */}
                     {cityData.list.map(oneDayWeather => {
                         const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
                         const icon = oneDayWeather.weather[0].icon;
@@ -51,7 +57,7 @@ const CityWeather = (props) => {
                         const dayTempInFarhenheit = Math.round(celsiusToFarhenheit(dayTempInCelsius))
                         return (
                             <div key={oneDayWeather.dt}>
-                                <img src={`http://openweathermap.org/img/wn/${icon}.png`} alt="weather-logo" />
+                                <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt="weather-logo" />
                                 <p>{`${dayInStringFormat}`}</p>
                                 <p>{showCelsius ? `${dayTempInCelsius} °C` : `${dayTempInFarhenheit} °F`} </p>
                             </div>
@@ -105,6 +111,9 @@ const CityDescription = styled.div`
     padding: 0;
     text-align: center;
     color: white;
+`
+const CurrentDayWeather = styled.div`
+    
 `
 
 export default CityWeather;

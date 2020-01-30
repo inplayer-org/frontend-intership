@@ -1,13 +1,18 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { Background } from './CityWeather'
 
 const CityNotFound = ({ location: { search: city } }) => {
     return (
-        <div>
-            City <span style={{ fontSize: 20 }}>{city.slice(1)}</span> not found.
-            <br />
-            <Link to={'/'}>Try again</Link>
-        </div>
+        <Background>
+            <div>
+                <h1>
+                    City {city.slice(1)} not found.
+                </h1>
+                <br />
+                <Link to={'/'}>Try again</Link>
+            </div>
+        </Background>
     );
 }
 

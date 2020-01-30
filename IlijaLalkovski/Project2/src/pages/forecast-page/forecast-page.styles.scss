@@ -1,0 +1,173 @@
+.forecast-page {
+	background-color: #1f314e;
+	color: #ffffff;
+	display: flex;
+	height: 100vh;
+	align-items: center;
+	justify-content: center;
+
+	.forecast-container {
+		display: flex;
+		height: 450px;
+		width: 750px;
+		background-color: #05889a;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+
+		.home-link {
+			display: flex;
+			align-self: flex-start;
+			position: absolute;
+			img {
+				padding-bottom: 0;
+				width: 2.2rem;
+				height: 2.2rem;
+				padding-bottom: 380px;
+				padding-left: 20px;
+			}
+		}
+
+		.toggle {
+			position: absolute;
+			display: flex;
+			align-self: flex-end;
+			padding-bottom: 380px;
+			padding-right: 20px;
+		}
+
+		.city-info {
+			margin: 0;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.city-name {
+				padding-top: 20px;
+				display: flex;
+				margin: 0;
+			}
+
+			.date {
+				font-size: 1.3rem;
+				display: flex;
+				margin: 0;
+			}
+
+			.current-forecast {
+				margin: 5px 0 0 0;
+				padding-bottom: 10px;
+			}
+		}
+
+		.temp {
+			display: flex;
+			justify-items: center;
+			height: 35%;
+
+			.main-temp {
+				display: flex;
+				font-size: 6rem;
+				padding: 2vw;
+				align-items: center;
+
+				img {
+					margin-left: -50px;
+					margin-right: -10px;
+					padding-bottom: 0;
+					width: 6rem;
+					height: 6rem;
+				}
+			}
+
+			.temp-details {
+				align-self: center;
+				font-size: 1.3rem;
+			}
+		}
+
+		h1 {
+			padding: 0;
+		}
+	}
+
+	@media (max-width: 750px) {
+		.forecast-container {
+			height: 100%;
+			width: 100%;
+
+			.home-link {
+				img {
+					padding-bottom: 520px;
+					padding-left: 20px;
+				}
+			}
+
+			.city-info {
+				.city-name {
+					padding-top: 0;
+					margin: 0;
+				}
+
+				.date {
+					font-size: 1.3rem;
+					display: flex;
+					margin: 0;
+					padding-bottom: 0px;
+				}
+			}
+
+			.temp {
+				transform: scale(0.9);
+				.main-temp {
+					padding: 2vw;
+					img {
+						margin-left: -25px;
+						margin-right: -15px;
+					}
+				}
+			}
+			.toggle {
+				padding-bottom: 525px;
+				padding-right: 10px;
+			}
+		}
+	}
+
+	@media (max-width: 350px) {
+		.home-link {
+			img {
+				padding-bottom: 450px !important;
+			}
+		}
+
+		.toggle {
+			padding-bottom: 450px !important;
+			padding-right: 0px !important;
+		}
+		.city-info {
+			margin: 0em;
+			padding-top: 30px;
+			margin-bottom: -20px !important;
+			.city-name {
+				padding-top: 20px;
+				display: flex;
+				margin: 0;
+			}
+
+			.date {
+				font-size: 1.3rem;
+				display: flex;
+				margin: 0;
+			}
+
+			.current-forecast {
+				margin: 0 0 0 0;
+				padding-bottom: 0px !important;
+			}
+		}
+		.temp {
+			transform: scale(0.8) !important;
+		}
+	}
+}
