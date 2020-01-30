@@ -1,0 +1,84 @@
+
+
+body{
+    background-color: antiquewhite;
+
+}
+.show_city_detalis{
+    width: 100%;
+}
+.first{
+    /* width: 50%; */
+    margin: auto;
+    text-align: center;
+
+    margin-top: 25%;
+}
+.first-div{
+    width: 50%;
+    margin: auto;
+}
+.second{
+    width: 70%;
+    margin: auto;
+    text-align: center;
+    margin-top: 10%;
+}
+
+input{
+    width: 300px;
+    height: 30px;
+}
+button{
+    margin: 10px;
+}
+img{
+    width: 100px;
+}
+
+
+
+.warning{
+    border: 1px solid red;
+    background-color: #ff00002b;
+}
+
+.wrapper .second div{
+    display: inline-block;
+    margin: 10px;
+}
+
+.wrapper .second  div:nth-child(4),.wrapper .second div:nth-child(5),
+.wrapper .second div:nth-child(6),.wrapper .second div:nth-child(7),.wrapper .second div:nth-child(8),.wrapper .second div:nth-child(10),
+.wrapper .second   div:nth-child(9),.wrapper .second div:nth-child(12),.wrapper .second div:nth-child(13),.wrapper .second div:nth-child(14),
+.wrapper .second   div:nth-child(15),.wrapper .second div:nth-child(16),.wrapper .second div:nth-child(18),.wrapper .second div:nth-child(17),
+.wrapper .second   div:nth-child(20),.wrapper .second div:nth-child(21),.wrapper .second div:nth-child(22),.wrapper .second div:nth-child(23),
+.wrapper .second   div:nth-child(24),.wrapper .second div:nth-child(26),.wrapper .second div:nth-child(25),.wrapper .second div:nth-child(28),
+.wrapper .second  div:nth-child(29),.wrapper .second div:nth-child(30),.wrapper .second div:nth-child(31),.wrapper .second div:nth-child(32),
+.wrapper .second   div:nth-child(34), .wrapper .second div:nth-child(36),.wrapper .second div:nth-child(36),
+.wrapper .second   div:nth-child(37),.wrapper .second div:nth-child(38),.wrapper .second div:nth-child(39),.wrapper .second div:nth-child(40),
+.wrapper .second   div:nth-child(41),.wrapper .second div:nth-child(42),.wrapper .second div:nth-child(33)
+
+
+{
+    display: none;
+}
+ @media (max-width: 500px){
+
+    #first{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #first-div{
+        flex-direction:column;
+        text-align: center;
+        width: 100%;
+    }
+
+
+
+
+
+    
+    } 

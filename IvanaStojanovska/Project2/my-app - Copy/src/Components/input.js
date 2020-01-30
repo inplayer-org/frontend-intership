@@ -1,5 +1,4 @@
 import React from 'react';
-import './input-style.css'
 const axios = require('axios');
 
 
@@ -27,32 +26,30 @@ class Input extends React.Component {
                     "October", "November", "December"];
                 let day_names = ["Sunday","Monday", "Tuesday", "Wednesday",
                     "Thursday", "Friday", "Saturday"];
+
+                let day_parts = ["night", "night","night", "night","night", "morning" ,"morning","morning","morning","morning", "day","day","day","day","day","day",
+                    "day","day","evening","evening","evening","evening","night", "night", "night"];
                 if(response.status === 200){
                     const temp = response.data;
                     for(let i = 0; i<temp.list.length; i+=8){
                         let dt = temp.list[i].dt;
-                        let description=temp.list[i].weather[0].description
+                        let description = temp.list[i].weather[0].description;
                         let date_format = new Date(dt * 1000);
-                        temp.list[i] = {day: day_names[date_format.getDay()] + " ",month: m_names[date_format.getMonth()] + " ", year: date_format.getFullYear(), temperature: (temp.list[i].main.temp - 273.15).toFixed(0) + " °C",  };
+                        temp.list[i] = {day: day_names[date_format.getDay()] + " ",month: m_names[date_format.getMonth()] + " ", year: date_format.getFullYear(), temperature: (temp.list[i].main.temp - 273.15).toFixed(0) + " ° C",description: description,image_src:"http://openweathermap.org/img/w/" + temp.list[i].weather[0].icon + ".png"};
                     }
-                      let first=temp.list[0]
-                    console.log(temp);
-                    console.log(first)
-                    
 
-                 
 
-                    console.log(temp.list)
-                 
+
+                    let first = temp.list[0];
+                    console.log(first);
+
 
                     this.setState({
-                        first:first,
                         data: temp,
+                        first: first,
                         showForecast: true,
                         incorrect: false,
-                        error: false,
-                       
-
+                        error: false
                     })
 
                 }
@@ -81,11 +78,12 @@ class Input extends React.Component {
     }
 
     render() {
-        const { data, input, error, incorrect, showForecast, celsius,first} = this.state;
+        const { data,first, input, error, incorrect, showForecast, celsius} = this.state;
         return (
             <div className="wrapper">
                 {!showForecast &&
                     <div className="first">
+                        <div className='first-div'>
                         <form>
                             <input
                                 aria-label="Name"
@@ -99,56 +97,66 @@ class Input extends React.Component {
                         {incorrect && <p>City is not correct!</p>}
                         <button onClick={()=> this.search()}>Search</button>
                     </div>
+                    </div>
                 }
-
-
 
                 {showForecast &&
                     <div className="second">
-                        <div className='nameCity'>
-                        <button onClick={()=> this.goBack()}>Back</button>
-                        <h1>{data.city.name}</h1>
-                        </div>
-
-                        <div className='city-temp'>
-                             
-                <h3>{first.day}   {first.month} {first.getDay} {first.year} {first.date_format}</h3>
-                <span>
-                    <h1> {first.temperature} </h1>
-                </span>
-
-                         
-    
-                    
+                        <div className='button'>
                        
-                    </div>
-                    <div className='card-days'>
+                        <button onClick={()=> this.goBack()}>Back</button>
+                        </div>
+                        <div className='show_city_detalis'>
+                            <div className='day-info'>
 
 
-                    {data.list.map((item, i)=>
-                            <div key={i}>
-                                <span>{item.day}</span>
-                                { <span>{item.month}</span> }
-                                { <span>{item.year}</span> }
-                               
-                                <p>{item.temperature}</p>
+                <h1>{data.city.name}</h1>   <h3>{first.day}  {first.month} {first.year}   </h3>
+              
+                <p>      {first.description}       </p>
+                  <span>{data.date_format}</span>
+                  </div>
+                  <div className='temperature-info'>
 
-
+                <span> <h2> {first.temperature} </h2> 
+               </span><img src={first.image_src} alt={"weather-logo"}/>
+                <p></p>
+                </div>
 
                             </div>
+
+
+
+
+
+                  
+                        {data.list.map((item, i)=>
+                            <div key={i}>
+                                <span>{item.day}</span>
+                                <span>{item.month}</span>
+                                <span>{item.year}</span>
+                                <p>{item.temperature}</p>
+                                <p>{item.description}</p>
+                                <img src={item.image_src} alt={'weather-logo'}/>
+                                </div>
+                          
+
+                          
+                        
+                            
                         )}
-
-
-
+                       
                         </div>
+                        
 
+            
 
-
-
-                    </div>
                 }
+               
             </div>
+           
         )
+        
+    
     }
 }
 
