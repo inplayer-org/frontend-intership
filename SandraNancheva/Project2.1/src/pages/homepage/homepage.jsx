@@ -46,5 +46,9 @@ class HomePage extends Component {
 	}
 }
 
+const mapStateToProps=(state) => ({
+	city: state.home.city
+})
+
 
 export default withRouter(HomePage);

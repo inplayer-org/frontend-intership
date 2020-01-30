@@ -1,5 +1,6 @@
 import React from 'react';
 import './inputcity.scss'
+import { connect } from 'react-redux'
 
 const InputCity = (props) => ( 
 	<div className="inputform">
@@ -8,5 +9,6 @@ const InputCity = (props) => (
 		</form>
 	</div>
 )
+const mapDispatchToProps()
 
-export default InputCity;
+export default connect(null,mapDispatchToProps) (InputCity);
