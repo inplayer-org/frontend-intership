@@ -20,9 +20,10 @@ const CityNotFound = ({ location: { search: city } }) => {
     );
 };
 
-const TryAgainButton = styled.button`
-    padding: 7px;
+export const TryAgainButton = styled.button`
+    padding: 12px;
     border: none;
+    border-radius: 5px;
     background-color: lightblue;
     cursor: pointer;
 
@@ -33,6 +34,6 @@ const TryAgainButton = styled.button`
 
 const CityName = styled.span`
     color: white;
-`
+`;
 
 export default CityNotFound;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { TryAgainButton as GoBackButton } from "./CityNotFound";
 import { days } from "../../data/daysOfWeek";
 import WeatherDaily from "../WeatherDaily/WeatherDaily";
 
@@ -85,7 +86,12 @@ const CityWeather = props => {
                     })}
                 </OneWeekWeather>
             </Wrapper>
-            <Link to={"/"}>Go back</Link>
+
+            <ButtonWrapper>
+                <Link to={"/"}>
+                    <GoBackButton>Go back</GoBackButton>
+                </Link>
+            </ButtonWrapper>
         </Background>
     );
 };
@@ -124,12 +130,11 @@ const OneWeekWeather = styled.div`
     }
 `;
 
-const CityDescription = styled.div`
-    font-size: 2em;
+const CityDescription = styled.h1`
     margin: 0;
     padding: 0;
     text-align: center;
-    color: white;
+    /* color: white; */
 `;
 
 const CelsiusButton = styled.button`
@@ -141,7 +146,11 @@ const CelsiusButton = styled.button`
     color: white;
     cursor: pointer;
 
-    ${({disabled}) => disabled && `background: #c1d8e3;`}
+    ${({ disabled }) => disabled && `background: #a6b7bf;`}
+`;
+
+const ButtonWrapper = styled.div`
+    justify-self: center;
 `;
 
 export default CityWeather;
