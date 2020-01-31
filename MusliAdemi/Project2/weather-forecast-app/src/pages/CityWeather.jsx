@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { TryAgainButton as GoBackButton } from "./CityNotFound";
-import { days } from "../../data/daysOfWeek";
-import WeatherDaily from "../WeatherDaily/WeatherDaily";
+import { days } from "../data/daysOfWeek";
+import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
 
 const getDayOfWeekAsString = oneDayWeather => {
     const unix_timestamp = oneDayWeather.dt;
