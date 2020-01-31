@@ -35,9 +35,4 @@ const CityName = styled.span`
     color: white;
 `
 
-// const Wrapper = styled.div`
-//     align-self: center;
-//     justify-self: center;
-// `;
-
 export default CityNotFound;

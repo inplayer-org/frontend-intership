@@ -46,20 +46,19 @@ const CityWeather = props => {
                     City Weather for {capitalizedCityName}
                 </CityDescription>
                 <div>
-                    <button
+                    <CelsiusButton
                         onClick={handleToggleF}
                         disabled={showFarhenheit}
                     >
                         F
-                    </button>
-                    <button
+                    </CelsiusButton>
+                    <CelsiusButton
                         onClick={handleToggleC}
                         disabled={showCelsius}
                     >
                         C
-                    </button>
+                    </CelsiusButton>
                 </div>
-                <CurrentDayWeather></CurrentDayWeather>
                 <OneWeekWeather>
                     {/* iterate through 1 week list of data */}
                     {cityData.list.map(oneDayWeather => {
@@ -132,6 +131,17 @@ const CityDescription = styled.div`
     text-align: center;
     color: white;
 `;
-const CurrentDayWeather = styled.div``;
+
+const CelsiusButton = styled.button`
+    padding: 10px;
+    margin: 2px;
+    border-radius: 5px;
+    border: none;
+    background-color: #063b5c;
+    color: white;
+    cursor: pointer;
+
+    ${({disabled}) => disabled && `background: #c1d8e3;`}
+`;
 
 export default CityWeather;
