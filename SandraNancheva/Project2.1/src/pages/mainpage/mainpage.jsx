@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { storeData, changeUnits } from '../../redux/main/main.actions'
 import ErrorPage from '../errorpage/errorpage';
 import Header from '../../components/Header/header';
 import TodayWeather from '../../components/TodayWeather/todayweather';
@@ -9,9 +11,8 @@ import './mainpage.scss';
 class MainPage extends Component {
 	state = {
 		location: '',
-		data: [],
-		units: 'imperial',
-		errorMsg: ''
+		data: []
+		
 	};
 
 	async fetchWeather(location, units) {
@@ -22,7 +23,7 @@ class MainPage extends Component {
 				);
 				const data = await response.json();
 				console.log(data);
-				this.setState({ data });
+				this.props.storeData(data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -32,7 +33,7 @@ class MainPage extends Component {
 					`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&lat=${location.lat}&lon=${location.lon}`
 				);
 				const data = await response.json();
-				this.state({ data });
+				this.props.storeData(data);
 			} catch (err) {
 				console.log(err);
 			}
@@ -41,17 +42,17 @@ class MainPage extends Component {
 
 	componentDidMount() {
 		this.setState({ location: queryString.parse(this.props.location.search) });
-		this.fetchWeather(queryString.parse(this.props.location.search), this.state.units);
+		this.fetchWeather(queryString.parse(this.props.location.search), this.props.units);
 	}
 
 	handleTemp = () => {
 		const location = queryString.parse(this.props.location.search);
-		if (this.state.units === 'imperial') {
+		if (this.props.units === 'imperial') {
 			this.fetchWeather(location, 'metric');
-			this.setState({ units: 'metric' });
+			this.props.changeUnits('metric')
 		} else {
 			this.fetchWeather(location, 'imperial');
-			this.setState({ units: 'imperial' });
+			this.props.changeUnits('imperial')
 		}
 	};
 
@@ -60,12 +61,25 @@ class MainPage extends Component {
 			<ErrorPage />
 		) : (
 			<div className="mainpage">
-				<Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
+				{/* <Header data={this.state.data} units={this.state.units} handleTemp={this.handleTemp} />
 				<TodayWeather data={this.state.data} units={this.state.units} />
-				<Footer data={this.state.data} units={this.state.units} />
+				<Footer data={this.state.data} units={this.state.units} /> */}
+				<Header   data={this.props.data} units={this.props.units} handleTemp={this.handleTemp} />
+				<TodayWeather data={this.props.data} units={this.props.units}  />
+				<Footer data={this.props.data} units={this.props.units} />
 			</div>
 		);
 	}
 }
+const mapStateToProps = (state) => ({
+	units: state.main.units,
+	data: state.main.data
+})
 
-export default MainPage;
+const mapDispatchToProps = {
+	storeData: storeData,
+	changeUnits: changeUnits
+	
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MainPage);

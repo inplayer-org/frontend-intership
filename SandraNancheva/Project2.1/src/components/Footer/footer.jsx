@@ -8,4 +8,5 @@ const Footer = ({ data, units }) => (
 	</div>
 );
 
+
 export default Footer;

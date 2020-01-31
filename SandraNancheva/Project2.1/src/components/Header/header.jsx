@@ -1,9 +1,10 @@
 import React from 'react';
+import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
 import ViewInfo from '../ViewInfo/viewinfo';
 import './header.scss';
 
-const Header = ({ data, handleTemp, units }) => {
+const Header = ( {data, handleTemp, units} ) => {
 	return (
 		<div className="header">
 			<div className="top">
@@ -21,5 +22,8 @@ const Header = ({ data, handleTemp, units }) => {
 		</div>
 	);
 };
+
+
+
 
 export default Header;

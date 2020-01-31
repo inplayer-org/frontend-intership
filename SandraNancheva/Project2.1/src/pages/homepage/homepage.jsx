@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux'
 import InputCity from '../../components/InputCity/inputcity';
 import CurrentLocation from '../../components/CurrentLocation/currentlocation';
 import './homepage.scss';
 
+
 class HomePage extends Component {
 	state = {
-		city: '',
-		lat: '',
-		lon: '',
-		errorMsg: false
+		city: ''
+
 	};
 	handleChange = (e) => {
 		this.setState({
@@ -17,38 +16,39 @@ class HomePage extends Component {
 		});
 	};
 
-	handleSubmit = () => {
-		this.props.history.push(`forecast?city=${this.state.city}`);
-	};
+	// handleSubmit = () => {
+	// 	this.props.history.push(`forecast?city=${this.state.city}`);
+	// };
 
-	handleClick = () => {
-		navigator.geolocation.getCurrentPosition(
-			(pos) => {
-				const lat = pos.coords.latitude;
-				const lon = pos.coords.longitude;
-				this.props.history.push(`forecast?lat=${lat}&lon=${lon}`);
-			},
-			() => {
-				this.setState({ errorMsg: true });
-			}
-		);
-	};
+	// handleClick = () => {
+	// 	navigator.geolocation.getCurrentPosition(
+	// 		(pos) => {
+	// 			const lat = pos.coords.latitude;
+	// 			const lon = pos.coords.longitude;
+	// 			this.props.history.push(`forecast?lat=${lat}&lon=${lon}`);
+	// 		},
+	// 		() => {
+	// 			this.setState({ errorMsg: true });
+	// 		}
+	// 	);
+	// };
 
 	render() {
 		return (
 			<div className="homepage">
-				{this.state.errorMsg ? <span>Error Location</span> : null}
-				<InputCity handleChange={this.handleChange} handleSubmit={this.handleSubmit} />
+				{this.props.errorMsg ? <span>Error Location</span> : null}
+				<InputCity handleChange={this.handleChange} city={this.state.city} history={this.props.history} />
 				<span className='text'>or</span>
-				<CurrentLocation handleClick={this.handleClick} />
+				<CurrentLocation history={this.props.history}/>
 			</div>
 		);
 	}
 }
 
-const mapStateToProps=(state) => ({
-	city: state.home.city
+const mapStateToProps = (state) => ({
+	errorMsg: state.home.errorMsg
 })
 
 
-export default withRouter(HomePage);
+
+export default connect(mapStateToProps)(HomePage);
