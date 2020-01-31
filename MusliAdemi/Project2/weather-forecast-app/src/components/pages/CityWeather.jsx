@@ -107,7 +107,7 @@ export const Background = styled.div`
     );
 `;
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
     align-self: center;
     justify-self: center;
 `;
