@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
 // import axios from "axios";
 import styled from "styled-components";
@@ -17,7 +18,7 @@ const HomePage = props => {
         console.log(props);
     };
 
-    return (
+    let renderPage = (
         <Background>
             <Wrapper>
                 <div>
@@ -31,9 +32,24 @@ const HomePage = props => {
                             autoFocus
                         />
                     </form>
-                    {props.preload ? "Loading" : ""}
                 </div>
             </Wrapper>
+        </Background>
+    );
+
+    let loader = (
+        <Loader
+            type="TailSpin"
+            color="#fff"
+            height={100}
+            width={100}
+            timeout={3000} //3 secs
+        />
+    );
+
+    return (
+        <Background>
+            <Wrapper>{props.preload ? loader : renderPage}</Wrapper>
         </Background>
     );
 };
@@ -54,22 +70,11 @@ const Input = styled.input`
     }
 `;
 
-const mapStateToProps = state => {
-    console.log("MAP STATE");
-    console.log(state);
-
-    return {
-        city: getCity(state),
-        oneWeekWeather: getOneWeekWeather(state),
-        preload: getPreload(state)
-    };
-};
-
-// const mapStateToProps = state => ({
-//     city: getCity(state),
-//     oneWeekWeather: getOneWeekWeather(state),
-//     preload: getPreload(state)
-// });
+const mapStateToProps = state => ({
+    city: getCity(state),
+    oneWeekWeather: getOneWeekWeather(state),
+    preload: getPreload(state)
+});
 
 const mapDispatchToProps = dispatch => {
     return {
