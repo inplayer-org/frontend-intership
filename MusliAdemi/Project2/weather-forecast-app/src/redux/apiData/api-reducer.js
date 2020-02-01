@@ -1,8 +1,4 @@
-import {
-    FETCH_DATA_PRELOAD,
-    FETCH_DATA_SUCCESS,
-    FETCH_DATA_ERROR
-} from "./api-actions";
+import { FETCH_DATA_ERROR, FETCH_DATA_PRELOAD, FETCH_DATA_SUCCESS } from "./api-actions";
 
 const initialState = {
     preload: false,
@@ -18,17 +14,17 @@ const apiReducer = (state = initialState, action) => {
                 preload: true
             };
         case FETCH_DATA_SUCCESS:
-            console.log(state);
-            console.log(action.payload.list);
             return {
                 ...state,
                 oneWeekWeather: action.payload.list,
-                city: action.payload.city
+                city: action.payload.city,
+                preload: false
             };
         case FETCH_DATA_ERROR:
             return {
                 ...state,
-                city: action.preload
+                city: action.preload,
+                preload: false
             };
         default:
             return state;

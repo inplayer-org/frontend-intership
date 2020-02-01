@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { TryAgainButton as GoBackButton } from "./CityNotFound";
-import { days } from "../data/daysOfWeek";
 import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
+import { days } from "../data/daysOfWeek";
+import { TryAgainButton as GoBackButton } from "./CityNotFound";
 
 const getDayOfWeekAsString = oneDayWeather => {
     const unix_timestamp = oneDayWeather.dt;
@@ -14,13 +15,13 @@ const getDayOfWeekAsString = oneDayWeather => {
 };
 
 const CityWeather = props => {
-    const { cityName } = props.match.params;
-    const { cityData } = props.history.location.state;
-    const currentDayData = cityData.list[0];
+    console.log(props);
+    const { cityName } = props;
+    const { cityData } = props;
+    // const currentDayData = cityData[0];
 
     const capitalizedCityName =
-        cityName.charAt(0).toUpperCase() +
-        cityName.substring(1).toLowerCase();
+        cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     const [showFarhenheit, setShowFarhenheit] = useState(false);
     const [showCelsius, setShowCelsius] = useState(true);
@@ -43,33 +44,21 @@ const CityWeather = props => {
     return (
         <Background>
             <Wrapper>
-                <CityDescription>
-                    City Weather for {capitalizedCityName}
-                </CityDescription>
+                <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
                 <div>
-                    <CelsiusButton
-                        onClick={handleToggleF}
-                        disabled={showFarhenheit}
-                    >
+                    <CelsiusButton onClick={handleToggleF} disabled={showFarhenheit}>
                         F
                     </CelsiusButton>
-                    <CelsiusButton
-                        onClick={handleToggleC}
-                        disabled={showCelsius}
-                    >
+                    <CelsiusButton onClick={handleToggleC} disabled={showCelsius}>
                         C
                     </CelsiusButton>
                 </div>
                 <OneWeekWeather>
                     {/* iterate through 1 week list of data */}
-                    {cityData.list.map(oneDayWeather => {
-                        const dayInStringFormat = getDayOfWeekAsString(
-                            oneDayWeather
-                        );
+                    {cityData.map(oneDayWeather => {
+                        const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
                         const icon = oneDayWeather.weather[0].icon;
-                        const dayTempInCelsius = Math.round(
-                            oneDayWeather.temp.day
-                        );
+                        const dayTempInCelsius = Math.round(oneDayWeather.temp.day);
                         const dayTempInFarhenheit = Math.round(
                             celsiusToFarhenheit(dayTempInCelsius)
                         );
@@ -105,11 +94,7 @@ export const Background = styled.div`
     left: 0;
 
     background: rgb(50, 119, 163);
-    background: linear-gradient(
-        90deg,
-        rgba(50, 119, 163, 1) 8%,
-        rgba(71, 220, 221, 1) 100%
-    );
+    background: linear-gradient(90deg, rgba(50, 119, 163, 1) 8%, rgba(71, 220, 221, 1) 100%);
 `;
 
 export const Wrapper = styled.div`
@@ -153,4 +138,11 @@ const ButtonWrapper = styled.div`
     justify-self: center;
 `;
 
-export default CityWeather;
+const mapStateToProps = state => {
+    return {
+        cityData: state.data.oneWeekWeather,
+        cityName: state.data.city.name
+    };
+};
+
+export default connect(mapStateToProps)(CityWeather);

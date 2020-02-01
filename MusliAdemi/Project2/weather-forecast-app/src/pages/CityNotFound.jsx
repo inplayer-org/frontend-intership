@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Background, Wrapper } from "./CityWeather";
 
-const CityNotFound = ({ location: { search: city } }) => {
+const CityNotFound = props => {
+    const city = props.location.search;
     return (
         <Background>
             <Wrapper>
                 <h1>
-                    City <CityName>{city.slice(1)}</CityName> not
-                    found.
+                    City <CityName>{city.slice(1)}</CityName> not found.
                 </h1>
                 <br />
                 <Link to={"/"}>

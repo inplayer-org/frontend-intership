@@ -2,14 +2,9 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 // import axios from "axios";
 import styled from "styled-components";
-import { Background } from "./CityWeather";
+import { getCity, getOneWeekWeather, getPreload } from "../redux/apiData/api-reducer";
 import fetchData from "../redux/apiData/fetchData";
-import { bindActionCreators } from "redux";
-import {
-    getPreload,
-    getOneWeekWeather,
-    getCity
-} from "../redux/apiData/api-reducer";
+import { Background } from "./CityWeather";
 
 const HomePage = props => {
     const [cityName, setCityName] = useState("");
@@ -17,7 +12,7 @@ const HomePage = props => {
     // console.log(props);
     const makeAPIcall = e => {
         e.preventDefault();
-        props.fetchDataAPI(cityName);
+        props.fetchDataAPI(cityName, props);
         console.log("PROPS");
         console.log(props);
     };
@@ -28,9 +23,7 @@ const HomePage = props => {
                 <div>
                     <form onSubmit={makeAPIcall}>
                         <Input
-                            onChange={e =>
-                                setCityName(e.target.value)
-                            }
+                            onChange={e => setCityName(e.target.value)}
                             type="search"
                             placeholder="search a city"
                             value={cityName}
@@ -38,6 +31,7 @@ const HomePage = props => {
                             autoFocus
                         />
                     </form>
+                    {props.preload ? "Loading" : ""}
                 </div>
             </Wrapper>
         </Background>
@@ -60,16 +54,27 @@ const Input = styled.input`
     }
 `;
 
-const mapStateToProps = state => ({
-    city: getCity(state),
-    oneWeekWeather: getOneWeekWeather(state),
-    preload: getPreload(state)
-});
+const mapStateToProps = state => {
+    console.log("MAP STATE");
+    console.log(state);
+
+    return {
+        city: getCity(state),
+        oneWeekWeather: getOneWeekWeather(state),
+        preload: getPreload(state)
+    };
+};
+
+// const mapStateToProps = state => ({
+//     city: getCity(state),
+//     oneWeekWeather: getOneWeekWeather(state),
+//     preload: getPreload(state)
+// });
 
 const mapDispatchToProps = dispatch => {
     return {
-        fetchDataAPI: city => {
-            dispatch(fetchData(city));
+        fetchDataAPI: (city, props) => {
+            dispatch(fetchData(city, props));
         }
     };
 };
