@@ -23,7 +23,7 @@ const apiReducer = (state = initialState, action) => {
         case FETCH_DATA_ERROR:
             return {
                 ...state,
-                city: action.preload,
+                city: action.payload,
                 preload: false
             };
         default:

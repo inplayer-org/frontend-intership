@@ -1,15 +1,16 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { Background, Wrapper } from "./CityWeather";
 
 const CityNotFound = props => {
-    const city = props.location.search;
+    const city = props.cityName;
     return (
         <Background>
             <Wrapper>
                 <h1>
-                    City <CityName>{city.slice(1)}</CityName> not found.
+                    City <CityName>{city}</CityName> not found.
                 </h1>
                 <br />
                 <Link to={"/"}>
@@ -36,4 +37,10 @@ const CityName = styled.span`
     color: white;
 `;
 
-export default CityNotFound;
+const mapStateToProps = state => {
+    return {
+        cityName: state.data.city
+    };
+};
+
+export default connect(mapStateToProps)(CityNotFound);

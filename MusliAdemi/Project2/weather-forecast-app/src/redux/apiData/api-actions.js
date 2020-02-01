@@ -9,7 +9,6 @@ export function fetchDataPreload() {
 }
 
 export function fetchDataSuccess(data) {
-    // console.log(data);
     return {
         type: FETCH_DATA_SUCCESS,
         payload: data
