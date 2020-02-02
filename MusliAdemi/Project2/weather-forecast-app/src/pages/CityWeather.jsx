@@ -131,7 +131,7 @@ const CelsiusButton = styled.button`
     color: white;
     cursor: pointer;
 
-    ${({ disabled }) => disabled && `background: #a6b7bf;`}
+    ${({ disabled }) => disabled && `opacity: 0.65; cursor: not-allowed !important`}
 `;
 
 const ButtonWrapper = styled.div`

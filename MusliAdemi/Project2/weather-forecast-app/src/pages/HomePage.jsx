@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Loader from "react-loader-spinner";
 import { connect } from "react-redux";
-// import axios from "axios";
 import styled from "styled-components";
 import { getCity, getOneWeekWeather, getPreload } from "../redux/apiData/api-reducer";
 import fetchData from "../redux/apiData/fetchData";
@@ -10,12 +9,27 @@ import { Background } from "./CityWeather";
 const HomePage = props => {
     const [cityName, setCityName] = useState("");
 
-    // console.log(props);
     const makeAPIcall = e => {
         e.preventDefault();
-        props.fetchDataAPI(cityName, props);
-        console.log("PROPS");
-        console.log(props);
+        props.fetchDataAPI("q=" + cityName, props);
+    };
+
+    const getLocation = () => {
+        if (!navigator.geolocation) {
+            console.log("ERROR");
+        } else {
+            navigator.geolocation.getCurrentPosition(success, error);
+        }
+    };
+    const error = () => {
+        console.log("========ERROR LOCATION========");
+    };
+
+    const success = position => {
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        const cityCoordinates = `lat=${lat}&lon=${long}`;
+        props.fetchDataAPI(cityCoordinates, props);
     };
 
     let renderPage = (
@@ -32,6 +46,7 @@ const HomePage = props => {
                             autoFocus
                         />
                     </form>
+                    <button onClick={getLocation}>get current location</button>
                 </div>
             </Wrapper>
         </Background>
