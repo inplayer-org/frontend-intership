@@ -12,9 +12,10 @@ const fetchData = (cityName, props) => {
             props.history.push(`forecast/${cityName}`);
             return response;
         } catch (e) {
-            dispatch(fetchDataError(cityName));
-            props.history.push(`error/${cityName}`);
+            const cityWithoutQequals = cityName.slice(2);
+            dispatch(fetchDataError(cityWithoutQequals));
+            props.history.push(`error/${cityWithoutQequals}`);
         }
     };
-}
+};
 export default fetchData;

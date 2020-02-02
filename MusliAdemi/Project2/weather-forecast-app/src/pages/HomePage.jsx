@@ -46,7 +46,7 @@ const HomePage = props => {
                             autoFocus
                         />
                     </form>
-                    <button onClick={getLocation}>use my current location</button>
+                    <UseMyLocation onClick={getLocation}>use my current location</UseMyLocation>
                 </div>
             </Wrapper>
         </Background>
@@ -84,6 +84,15 @@ const Input = styled.input`
         outline: none;
     }
 `;
+
+const UseMyLocation = styled.p`
+    cursor: pointer;
+    color: white;
+    
+    &:hover {
+        opacity: 0.65;
+    }
+`
 
 const mapStateToProps = state => ({
     city: getCity(state),
