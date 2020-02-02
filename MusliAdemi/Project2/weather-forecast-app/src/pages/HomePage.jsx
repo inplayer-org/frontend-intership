@@ -46,7 +46,7 @@ const HomePage = props => {
                             autoFocus
                         />
                     </form>
-                    <button onClick={getLocation}>get current location</button>
+                    <button onClick={getLocation}>use my current location</button>
                 </div>
             </Wrapper>
         </Background>
