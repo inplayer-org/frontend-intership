@@ -1,6 +1,10 @@
+//react
 import React from "react";
-import { connect } from "react-redux";
+//routing
 import { Link } from "react-router-dom";
+//redux
+import { connect } from "react-redux";
+//style
 import styled from "styled-components";
 import { Background, Wrapper } from "./CityWeather";
 
