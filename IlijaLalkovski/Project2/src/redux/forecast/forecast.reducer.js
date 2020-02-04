@@ -1,7 +1,8 @@
 import {
 	SET_FORECAST_REQUEST,
 	SET_FORECAST_SUCCESS,
-	SET_FORECAST_FAIL
+	SET_FORECAST_FAIL,
+	RESET_DATA
 } from '../../redux/forecast/forecast.actions';
 
 const INITIAL_STATE = {
@@ -25,6 +26,13 @@ const forecastReducer = (state = INITIAL_STATE, action) => {
 			return {
 				...state,
 				isFail: true
+			};
+
+		case RESET_DATA:
+			return {
+				...state,
+				isFail: false,
+				isSuccess: false
 			};
 		default:
 			return state;

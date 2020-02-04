@@ -3,6 +3,7 @@ import axios from 'axios';
 export const SET_FORECAST_REQUEST = 'SET_FORECAST_REQUEST';
 export const SET_FORECAST_SUCCESS = 'SET_FORECAST_SUCCESS';
 export const SET_FORECAST_FAIL = 'SET_FORECAST_FAIL';
+export const RESET_DATA = 'RESET_DATA';
 
 export const getForecast = (city) => async (dispatch) => {
 	dispatch({ type: SET_FORECAST_REQUEST });
@@ -21,3 +22,7 @@ export const getForecast = (city) => async (dispatch) => {
 		dispatch({ type: SET_FORECAST_FAIL });
 	}
 };
+
+export const resetData = () => ({
+	type: RESET_DATA
+});

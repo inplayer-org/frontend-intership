@@ -8,6 +8,7 @@ import CardList from '../../components/card-list/card-list.component';
 import ToggleSwitch from '../../components/toggle-switch/toggle-switch.component';
 import MainTemp from '../../components/main-temp/main-temp.component';
 import TempDetails from '../../components/temp-details/temp-details.component';
+import { resetData as resetDataAction } from '../../redux/forecast/forecast.actions';
 
 class ForecastPage extends Component {
 	state = {
@@ -15,7 +16,8 @@ class ForecastPage extends Component {
 	};
 
 	componentDidMount() {
-		this.props.isSuccess='false';
+		const { resetData } = this.props;
+		resetData();
 	}
 
 	onChange = (event) => {
@@ -40,7 +42,6 @@ class ForecastPage extends Component {
 	render() {
 		const { days, city } = this.props;
 		const weather = days[0].weather[0];
-
 
 		return (
 			<div className="forecast-page">
@@ -71,7 +72,7 @@ class ForecastPage extends Component {
 						</div>
 					</div>
 					<div className="temp">
-						<MainTemp days={days} metrics={this.state.metrics}  />
+						<MainTemp days={days} metrics={this.state.metrics} />
 						<TempDetails days={days} metrics={this.state.metrics} />
 					</div>
 					<CardList days={days} {...this.state} />
@@ -82,9 +83,12 @@ class ForecastPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-	isSuccess: state.forecast.isSuccess,
 	days: state.forecast.list,
 	city: state.forecast.city
 });
 
-export default connect(mapStateToProps)(ForecastPage);
+const mapDispatchToProps = {
+	resetData: resetDataAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(ForecastPage);

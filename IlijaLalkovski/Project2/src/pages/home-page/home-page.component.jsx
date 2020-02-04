@@ -33,6 +33,7 @@ class HomePage extends Component {
 		}
 
 		if (forecast.isSuccess) {
+			console.log('testsfasdasd============');
 			return <Redirect to={`/forecast?city=${city}`} />;
 		}
 
