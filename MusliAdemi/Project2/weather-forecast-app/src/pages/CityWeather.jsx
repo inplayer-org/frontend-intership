@@ -1,10 +1,15 @@
+//react
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
-import styled from "styled-components";
 import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
-import { days } from "../data/daysOfWeek";
+//routing
+import { Link } from "react-router-dom";
+//redux
+import { connect } from "react-redux";
+//style
+import styled from "styled-components";
 import { TryAgainButton as GoBackButton } from "./CityNotFound";
+//data
+import { days } from "../data/daysOfWeek";
 
 const getDayOfWeekAsString = oneDayWeather => {
     const unix_timestamp = oneDayWeather.dt;
@@ -15,10 +20,8 @@ const getDayOfWeekAsString = oneDayWeather => {
 };
 
 const CityWeather = props => {
-    console.log(props);
     const { cityName } = props;
     const { cityData } = props;
-    // const currentDayData = cityData[0];
 
     const capitalizedCityName =
         cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
@@ -64,7 +67,6 @@ const CityWeather = props => {
                         );
                         return (
                             <WeatherDaily
-                                key={oneDayWeather.dt}
                                 imgIcon={icon}
                                 day={dayInStringFormat}
                                 celsius={dayTempInCelsius}
@@ -131,7 +133,7 @@ const CelsiusButton = styled.button`
     color: white;
     cursor: pointer;
 
-    ${({ disabled }) => disabled && `opacity: 0.65; cursor: not-allowed !important`}
+    ${({ disabled }) => disabled && `opacity: 0.65; cursor: not-allowed`}
 `;
 
 const ButtonWrapper = styled.div`
