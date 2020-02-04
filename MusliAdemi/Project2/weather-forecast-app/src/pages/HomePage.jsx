@@ -1,9 +1,12 @@
+//react
 import React, { useState } from "react";
 import Loader from "react-loader-spinner";
+//redux
 import { connect } from "react-redux";
-import styled from "styled-components";
-import { getCity, getOneWeekWeather, getPreload } from "../redux/apiData/api-reducer";
 import fetchData from "../redux/apiData/fetchData";
+import { getPreload } from "../redux/apiData/api-reducer";
+//style
+import styled from "styled-components";
 import { Background } from "./CityWeather";
 
 const HomePage = props => {
@@ -11,6 +14,7 @@ const HomePage = props => {
 
     const makeAPIcall = e => {
         e.preventDefault();
+        //pas props for further routing
         props.fetchDataAPI("q=" + cityName, props);
     };
 
@@ -29,10 +33,11 @@ const HomePage = props => {
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
         const cityCoordinates = `lat=${lat}&lon=${long}`;
+        //pas props for further routing
         props.fetchDataAPI(cityCoordinates, props);
     };
 
-    let renderPage = (
+    let HomePage = (
         <Background>
             <Wrapper>
                 <div>
@@ -52,19 +57,11 @@ const HomePage = props => {
         </Background>
     );
 
-    let loader = (
-        <Loader
-            type="TailSpin"
-            color="#fff"
-            height={100}
-            width={100}
-            timeout={3000} //3 secs
-        />
-    );
+    let loader = <Loader type="TailSpin" color="#fff" height={100} width={100} />;
 
     return (
         <Background>
-            <Wrapper>{props.preload ? loader : renderPage}</Wrapper>
+            <Wrapper>{props.preload ? loader : HomePage}</Wrapper>
         </Background>
     );
 };
@@ -88,15 +85,14 @@ const Input = styled.input`
 const UseMyLocation = styled.p`
     cursor: pointer;
     color: white;
-    
+
     &:hover {
         opacity: 0.65;
     }
-`
+`;
 
+//we only need preload from the state
 const mapStateToProps = state => ({
-    city: getCity(state),
-    oneWeekWeather: getOneWeekWeather(state),
     preload: getPreload(state)
 });
 

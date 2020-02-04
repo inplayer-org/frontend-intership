@@ -12,6 +12,7 @@ const fetchData = (cityName, props) => {
             props.history.push(`forecast/${cityName}`);
             return response;
         } catch (e) {
+            //remove "q=" if request is not made from input city
             const cityWithoutQequals = cityName.slice(2);
             dispatch(fetchDataError(cityWithoutQequals));
             props.history.push(`error/${cityWithoutQequals}`);
