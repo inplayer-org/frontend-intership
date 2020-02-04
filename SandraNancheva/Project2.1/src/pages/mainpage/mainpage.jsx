@@ -16,28 +16,29 @@ class MainPage extends Component {
 	};
 
 	async fetchWeather(location, units) {
+		let response;
 		if (Object.keys(location).length < 2) {
 			try {
-				const response = await fetch(
+				response = await fetch(
 					`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&q=${location.city}`
 				);
-				const data = await response.json();
-				console.log(data);
-				this.props.storeData(data);
+				// const data = await response.json();
+				// console.log(data);
+				// this.props.storeData(data);
 			} catch (err) {
 				console.log(err);
 			}
 		} else {
 			try {
-				const response = await fetch(
+				response = await fetch(
 					`http://api.openweathermap.org/data/2.5//forecast/daily?units=${units}&APPID=b714ec74bbab5650795063cb0fdf5fbe&cnt=7&lat=${location.lat}&lon=${location.lon}`
 				);
-				const data = await response.json();
-				this.props.storeData(data);
 			} catch (err) {
 				console.log(err);
 			}
 		}
+		const data = await response.json();
+		this.props.storeData(data);
 	}
 
 	componentDidMount() {

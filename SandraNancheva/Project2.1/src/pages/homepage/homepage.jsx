@@ -36,7 +36,7 @@ class HomePage extends Component {
 	render() {
 		return (
 			<div className="homepage">
-				{this.props.errorMsg ? <span>Error Location</span> : null}
+				{this.props.errorMsg && <span>Error Location</span> }
 				<InputCity handleChange={this.handleChange} city={this.state.city} history={this.props.history} />
 				<span className='text'>or</span>
 				<CurrentLocation history={this.props.history}/>
