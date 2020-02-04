@@ -6,16 +6,16 @@ import './forecast-page.styles.scss';
 import './home-icon.png';
 import CardList from '../../components/card-list/card-list.component';
 import ToggleSwitch from '../../components/toggle-switch/toggle-switch.component';
-import TempDetails from '../../components/temp-details/temp-details.component'
+import MainTemp from '../../components/main-temp/main-temp.component';
+import TempDetails from '../../components/temp-details/temp-details.component';
 
 class ForecastPage extends Component {
 	state = {
-		name: 'temp-unit',
-		metrics: '°C',
-	}
+		metrics: '°C'
+	};
 
 	componentDidMount() {
-		this.props.clearSuccess();
+		this.props.isSuccess='false';
 	}
 
 	onChange = (event) => {
@@ -39,9 +39,8 @@ class ForecastPage extends Component {
 
 	render() {
 		const { days, city } = this.props;
-		const temp = days[0].temp;
 		const weather = days[0].weather[0];
-		const iconUrl = `http://openweathermap.org/img/wn/${weather.icon}@2x.png`;
+
 
 		return (
 			<div className="forecast-page">
@@ -66,22 +65,14 @@ class ForecastPage extends Component {
 
 						<div className="toggle">
 							<ToggleSwitch
-								id="this.state.name"
+								id="temp-unit"
 								onChange={this.onChange}
 							/>
 						</div>
 					</div>
 					<div className="temp">
-						<div className="main-temp">
-							<img src={iconUrl} alt={weather.description} />
-							{this.state.metrics === '°F' ? (
-								Number((temp.day * 9 / 5 + 32).toFixed(0))
-							) : (
-								Number(temp.day.toFixed(0))
-							)}
-							{this.state.metrics}
-						</div>
-						<TempDetails days={days} metrics={this.state.metrics}/>
+						<MainTemp days={days} metrics={this.state.metrics}  />
+						<TempDetails days={days} metrics={this.state.metrics} />
 					</div>
 					<CardList days={days} {...this.state} />
 				</div>
@@ -91,6 +82,7 @@ class ForecastPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
+	isSuccess: state.forecast.isSuccess,
 	days: state.forecast.list,
 	city: state.forecast.city
 });
