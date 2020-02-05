@@ -19,15 +19,29 @@ const getDayOfWeekAsString = oneDayWeather => {
     return dayOfWeek;
 };
 
+const celsiusToFarhenheit = celsiusFormat => {
+    // Multiply by 9, then divide by 5, then add 32
+    return (celsiusFormat * 9) / 5 + 32;
+};
+
+const roundTemperature = temperature => {
+    return Math.round(temperature);
+};
+
 const CityWeather = props => {
+    const [showFarhenheit, setShowFarhenheit] = useState(false);
+    const [showCelsius, setShowCelsius] = useState(true);
+    
     const { cityName } = props;
     const { cityData } = props;
+
+    const currentDay = cityData[0];
+    const currentDayInStringFormat = getDayOfWeekAsString(currentDay);
+    const sixDayWeather = cityData.slice(1);
 
     const capitalizedCityName =
         cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
-    const [showFarhenheit, setShowFarhenheit] = useState(false);
-    const [showCelsius, setShowCelsius] = useState(true);
 
     const handleToggleF = () => {
         setShowFarhenheit(true);
@@ -37,11 +51,6 @@ const CityWeather = props => {
     const handleToggleC = () => {
         setShowCelsius(true);
         setShowFarhenheit(false);
-    };
-
-    const celsiusToFarhenheit = celsiusFormat => {
-        // Multiply by 9, then divide by 5, then add 32
-        return (celsiusFormat * 9) / 5 + 32;
     };
 
     return (
@@ -56,17 +65,21 @@ const CityWeather = props => {
                         C
                     </CelsiusButton>
                 </div>
+                <div>
+                    Current day: {currentDayInStringFormat}
+                </div>
                 <OneWeekWeather>
                     {/* iterate through 1 week list of data */}
-                    {cityData.map(oneDayWeather => {
+                    {sixDayWeather.map(oneDayWeather => {
                         const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
                         const icon = oneDayWeather.weather[0].icon;
-                        const dayTempInCelsius = Math.round(oneDayWeather.temp.day);
-                        const dayTempInFarhenheit = Math.round(
+                        const dayTempInCelsius = roundTemperature(oneDayWeather.temp.day);
+                        const dayTempInFarhenheit = roundTemperature(
                             celsiusToFarhenheit(dayTempInCelsius)
                         );
                         return (
                             <WeatherDaily
+                                key={oneDayWeather.dt}
                                 imgIcon={icon}
                                 day={dayInStringFormat}
                                 celsius={dayTempInCelsius}

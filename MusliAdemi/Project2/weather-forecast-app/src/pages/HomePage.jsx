@@ -11,10 +11,9 @@ import { Background } from "./CityWeather";
 
 const HomePage = props => {
     const [cityName, setCityName] = useState("");
-
     const makeAPIcall = e => {
         e.preventDefault();
-        //pas props for further routing
+        //pass props for further routing
         props.fetchDataAPI("q=" + cityName, props);
     };
 
@@ -33,7 +32,7 @@ const HomePage = props => {
         let lat = position.coords.latitude;
         let long = position.coords.longitude;
         const cityCoordinates = `lat=${lat}&lon=${long}`;
-        //pas props for further routing
+        //pass props for further routing
         props.fetchDataAPI(cityCoordinates, props);
     };
 
