@@ -1,6 +1,9 @@
 import React, { PureComponent } from 'react';
-
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { resetData as resetDataAction } from '../../redux/forecast/forecast.actions';
+
+
 
 import './error-page.styles.scss';
 import './404.jpg';
@@ -11,7 +14,8 @@ class ErrorPage extends PureComponent {
 	};
 
 	componentDidMount() {
-		this.props.clearState();
+		const { resetData } = this.props;
+		resetData();
 	}
 
 	handleOnClick = (e) => {
@@ -38,4 +42,10 @@ class ErrorPage extends PureComponent {
 	}
 }
 
-export default ErrorPage;
+const mapDispatchToProps = {
+	resetData: resetDataAction
+};
+
+export default connect(null, mapDispatchToProps)(ErrorPage);
+
+

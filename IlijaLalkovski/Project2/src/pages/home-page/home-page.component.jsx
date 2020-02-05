@@ -1,30 +1,49 @@
 import React, { Component } from 'react';
-
 import { Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './home-page.styles.scss';
-
 import InputField from '../../components/input-field/input-field.component';
+import { getForecast as getForecastAction } from '../../redux/forecast/forecast.actions';
 
 class HomePage extends Component {
-	render() {
-		const { city, isSuccess, isFail } = this.props;
+	state = { city: '' };
 
-		if (isFail) {
+	handleChange = (event) => {
+		const { value } = event.target;
+
+		this.setState({ city: value });
+	};
+
+	handleSubmit = (event) => {
+		event.preventDefault();
+
+		const { getForecast } = this.props;
+		const { city } = this.state;
+
+		getForecast(city);
+	};
+
+	render() {
+		const { forecast } = this.props;
+		const { city } = this.state;
+
+		if (forecast.isFail) {
 			return <Redirect to={`/404notfound`} />;
 		}
 
-		if (isSuccess) {
+		if (forecast.isSuccess) {
+			console.log('testsfasdasd============');
 			return <Redirect to={`/forecast?city=${city}`} />;
 		}
 
 		return (
 			<div className="home-page">
 				<div className="home-container">
-					<form onSubmit={this.props.handleSubmit}>
+					<form onSubmit={this.handleSubmit}>
 						<InputField
 							name="city"
-							handleChange={this.props.handleChange}
+							handleChange={this.handleChange}
 							value={city}
 							label="City"
 						/>
@@ -35,4 +54,12 @@ class HomePage extends Component {
 	}
 }
 
-export default HomePage;
+const mapStateToProps = (state) => ({
+	forecast: state.forecast
+});
+
+const mapDispatchToProps = {
+	getForecast: getForecastAction
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
