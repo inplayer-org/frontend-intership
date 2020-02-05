@@ -17,9 +17,35 @@
 	}
 }
 
+.geo-button {
+	min-width: 165px;
+	width: auto;
+	height: 50px;
+	letter-spacing: 0.5px;
+	line-height: 50px;
+	padding: 0 35px 0 35px;
+	font-size: 15px;
+	background-color: #1f314e;
+	color: white;
+	text-transform: uppercase;
+	border: 1px solid #1f314e;
+	cursor: pointer;
+
+	&:hover {
+		background-color: #05889a;
+		color: white;
+		border: 1px solid #1f314e;
+	}
+}
+
 @media (max-width: 750px) {
 	.home-container {
 		height: 100% !important;
 		width: 100% !important;
+	}
+
+	.geo-button {
+		font-size: 0.9rem;
+		transform: scale(0.7);
 	}
 }
