@@ -50,7 +50,7 @@ class HomePage extends Component {
 		}
 
 		if (forecast.isSuccess) {
-			return <Redirect to={`/forecast?city=${city}`} />;
+			return <Redirect to={`/forecast?${city}`} />;
 		}
 
 		return (
