@@ -36,7 +36,7 @@ export const getOneWeekWeather = state => {
     console.log(state);
     return state.data.oneWeekWeather;
 };
-export const getCity = state => state.data.city;
+export const getCity = state => state.data.city.name;
 export const getPreload = state => state.data.preload;
 
 export default apiReducer;

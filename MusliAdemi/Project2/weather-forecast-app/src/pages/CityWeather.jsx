@@ -5,6 +5,9 @@ import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
 import { Link } from "react-router-dom";
 //redux
 import { connect } from "react-redux";
+import { getOneWeekWeather, getCity } from "../redux/apiData/api-reducer";
+import { tempCelsius, tempFahrenheit } from "../redux/tempActions/temp-actions";
+import { getCelsius, getFahrenheit } from "../redux/tempActions/temp-reducer";
 //style
 import styled from "styled-components";
 import { TryAgainButton as GoBackButton } from "./CityNotFound";
@@ -29,9 +32,7 @@ const roundTemperature = temperature => {
 };
 
 const CityWeather = props => {
-    const [showFarhenheit, setShowFarhenheit] = useState(false);
-    const [showCelsius, setShowCelsius] = useState(true);
-    
+    //get cityName and cityData (API) from props [redux]
     const { cityName } = props;
     const { cityData } = props;
 
@@ -39,44 +40,24 @@ const CityWeather = props => {
     const currentDayInStringFormat = getDayOfWeekAsString(currentDay);
     const sixDayWeather = cityData.slice(1);
 
-    const capitalizedCityName =
-        cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
-
-
-    const handleToggleF = () => {
-        setShowFarhenheit(true);
-        setShowCelsius(false);
-    };
-
-    const handleToggleC = () => {
-        setShowCelsius(true);
-        setShowFarhenheit(false);
-    };
+    const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     return (
         <Background>
             <Wrapper>
                 <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
                 <div>
-                    <CelsiusButton onClick={handleToggleF} disabled={showFarhenheit}>
-                        F
-                    </CelsiusButton>
-                    <CelsiusButton onClick={handleToggleC} disabled={showCelsius}>
-                        C
-                    </CelsiusButton>
+                    <CelsiusButton onClick={props.tempFahrenheitToggler} disabled={!props.showCelsius}>F</CelsiusButton>
+                    <CelsiusButton onClick={props.tempCelsiusToggler} disabled={props.showCelsius}>C</CelsiusButton>
                 </div>
-                <div>
-                    Current day: {currentDayInStringFormat}
-                </div>
+                <div>Current day: {currentDayInStringFormat}</div>
                 <OneWeekWeather>
                     {/* iterate through 1 week list of data */}
                     {sixDayWeather.map(oneDayWeather => {
                         const dayInStringFormat = getDayOfWeekAsString(oneDayWeather);
                         const icon = oneDayWeather.weather[0].icon;
                         const dayTempInCelsius = roundTemperature(oneDayWeather.temp.day);
-                        const dayTempInFarhenheit = roundTemperature(
-                            celsiusToFarhenheit(dayTempInCelsius)
-                        );
+                        const dayTempInFarhenheit = roundTemperature(celsiusToFarhenheit(dayTempInCelsius));
                         return (
                             <WeatherDaily
                                 key={oneDayWeather.dt}
@@ -84,7 +65,7 @@ const CityWeather = props => {
                                 day={dayInStringFormat}
                                 celsius={dayTempInCelsius}
                                 farhenheit={dayTempInFarhenheit}
-                                showCelsius={showCelsius}
+                                showCelsius={props.showCelsius}
                             />
                         );
                     })}
@@ -155,9 +136,19 @@ const ButtonWrapper = styled.div`
 
 const mapStateToProps = state => {
     return {
-        cityData: state.data.oneWeekWeather,
-        cityName: state.data.city.name
+        cityData: getOneWeekWeather(state),
+        cityName: getCity(state),
+        showCelsius: getCelsius(state),
+        showFahrenheit: getFahrenheit(state)
     };
 };
 
-export default connect(mapStateToProps)(CityWeather);
+const mapDispatchToProps = dispatch => ({
+    tempCelsiusToggler: () => {
+        console.log("DISPATCH");
+        dispatch(tempCelsius());
+    },
+    tempFahrenheitToggler: () => dispatch(tempFahrenheit())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(CityWeather);
