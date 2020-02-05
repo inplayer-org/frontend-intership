@@ -42,6 +42,9 @@
 	.home-container {
 		height: 100% !important;
 		width: 100% !important;
+		.group {
+			padding: 0;
+		}
 	}
 
 	.geo-button {
