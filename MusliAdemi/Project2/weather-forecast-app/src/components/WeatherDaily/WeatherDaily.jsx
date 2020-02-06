@@ -18,7 +18,6 @@ const OneDayWeather = styled.div`
         opacity: ${({ selectedDay }) => (!selectedDay ? "0.75" : "")};
     }
     cursor: ${({ selectedDay }) => (selectedDay ? "not-allowed" : "")};
-    border: ${({ selectedDay }) => (selectedDay ? "1px solid black" : "")};
     ${({ selectedDay }) => selectedDay && `opacity: 0.3;`}
 `;
 export default WeatherDaily;
