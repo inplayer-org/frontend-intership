@@ -53,7 +53,6 @@ const CurrentDayInfo = styled.div`
     grid-auto-flow: column;
     grid-template-columns: 1fr 1fr 1fr;
     justify-items: center;
-    color: white;
     background-color: rgba(255, 255, 255, 0.2);
     margin-bottom: 10px;
 `;

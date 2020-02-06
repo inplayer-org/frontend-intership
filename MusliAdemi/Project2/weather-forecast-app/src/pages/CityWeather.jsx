@@ -110,6 +110,7 @@ export const Background = styled.div`
     position: fixed;
     top: 0;
     left: 0;
+    color: ${({ dayNightToggler }) => (dayNightToggler ? "white" : "black")};
     cursor: ${({ selectedDay }) => (selectedDay ? "not-allowed" : "")};
     background: ${({ dayNightToggler }) =>
         dayNightToggler
