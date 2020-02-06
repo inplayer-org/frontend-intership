@@ -117,41 +117,33 @@
 	}
 
 	@media (max-width: 350px) {
-		.home-link {
-			padding-top: 55px;
-			margin-bottom: -50px !important;
-			img {
-				padding-bottom: 450px !important;
-			}
-		}
+		.forecast-container {
+			height: 100%;
+			width: 100%;
+			.city-info {
+				margin: 0em;
+				padding-top: 0px;
+				margin-bottom: -20px !important;
+				.city-name {
+					padding-top: 20px;
+					display: flex;
+					margin: 0;
+				}
 
-		.toggle {
-			padding-bottom: 450px !important;
-			padding-right: 0px !important;
-		}
-		.city-info {
-			margin: 0em;
-			padding-top: 0px;
-			margin-bottom: -20px !important;
-			.city-name {
-				padding-top: 20px;
-				display: flex;
-				margin: 0;
-			}
+				.date {
+					font-size: 1.3rem;
+					display: flex;
+					margin: 0;
+				}
 
-			.date {
-				font-size: 1.3rem;
-				display: flex;
-				margin: 0;
+				.current-forecast {
+					margin: 0 0 0 0;
+					padding-bottom: 0px !important;
+				}
 			}
-
-			.current-forecast {
-				margin: 0 0 0 0;
-				padding-bottom: 0px !important;
+			.temp {
+				transform: scale(0.8) !important;
 			}
-		}
-		.temp {
-			transform: scale(0.8) !important;
 		}
 	}
 }
