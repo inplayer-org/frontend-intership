@@ -37,7 +37,7 @@ const HomePage = props => {
     };
 
     let HomePage = (
-        <Background>
+        <div>
             <Wrapper>
                 <div>
                     <form onSubmit={makeAPIcall}>
@@ -53,7 +53,7 @@ const HomePage = props => {
                     <UseMyLocation onClick={getLocation}>use my current location</UseMyLocation>
                 </div>
             </Wrapper>
-        </Background>
+        </div>
     );
 
     let loader = <Loader type="TailSpin" color="#fff" height={100} width={100} />;

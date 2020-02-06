@@ -22,7 +22,6 @@ const App = () => {
 
 export default App;
 
-
 // Write a shell script called backup.sh which will copy all.txt files
 // into a directory called backup. If the destination directory does
 // not exist, the script needs to create it.

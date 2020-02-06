@@ -15,6 +15,8 @@ import styled from "styled-components";
 import { TryAgainButton as GoBackButton } from "./CityNotFound";
 //data
 import { days } from "../data/daysOfWeek";
+import { toggleMode } from "../redux/darkMode/dark-mode-actions";
+import { getDarkModeToggler } from "../redux/darkMode/dark-mode-reducer";
 
 export const getDayOfWeekAsString = dt => {
     const date = new Date(dt * 1000);
@@ -41,20 +43,29 @@ const CityWeather = ({
     changeCurrentDayToggler,
     tempCelsiusToggler,
     showCelsius,
-    showFahrenheit
+    showFahrenheit,
+    dayNightModeToggler,
+    dayNight
 }) => {
     const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     return (
-        <Background>
+        <Background dayNightToggler={dayNight}>
             <Wrapper>
-                <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
+                <CheckBoxWrapper>
+                    <CheckBox onClick={dayNightModeToggler} id="checkbox" type="checkbox" />
+                    <CheckBoxLabel htmlFor="checkbox" />
+                </CheckBoxWrapper>
+                {/* <p>{dayNight ? "NIGHT" : "DAY"}</p> */}
+                <CityDescription dayNightToggler={dayNight}>
+                    City Weather for <CurrentDayName>{capitalizedCityName}</CurrentDayName>
+                </CityDescription>
                 <Buttons>
                     <div>
-                        <WeatherButtons onClick={tempFahrenheitToggler} disabled={showFahrenheit}>
+                        <WeatherButtons onClick={tempFahrenheitToggler} dayNightToggler={dayNight} disabled={showFahrenheit}>
                             F
                         </WeatherButtons>
-                        <WeatherButtons onClick={tempCelsiusToggler} disabled={showCelsius}>
+                        <WeatherButtons onClick={tempCelsiusToggler} dayNightToggler={dayNight} disabled={showCelsius}>
                             C
                         </WeatherButtons>
                     </div>
@@ -99,9 +110,11 @@ export const Background = styled.div`
     position: fixed;
     top: 0;
     left: 0;
-
-    background: rgb(50, 119, 163);
-    background: linear-gradient(90deg, rgba(50, 119, 163, 1) 8%, rgba(71, 220, 221, 1) 100%);
+    cursor: ${({ selectedDay }) => (selectedDay ? "not-allowed" : "")};
+    background: ${({ dayNightToggler }) =>
+        dayNightToggler
+            ? "linear-gradient(90deg, rgba(36, 59, 74, 1) 0%, rgba(0,0,0,1) 100%)"
+            : "linear-gradient(90deg, rgba(50, 119, 163, 1) 8%, rgba(71, 220, 221, 1) 100%)"};
 `;
 
 export const Wrapper = styled.div`
@@ -126,6 +139,7 @@ const CityDescription = styled.h1`
     margin: 0;
     padding: 0;
     text-align: center;
+    color: ${({ dayNightToggler }) => (dayNightToggler ? "white" : "black")};
     /* color: white; */
 `;
 
@@ -140,15 +154,67 @@ const WeatherButtons = styled.button`
     margin: 2px;
     border-radius: 5px;
     border: none;
-    background-color: #063b5c;
-    color: white;
+    background-color: ${({ dayNightToggler }) => (dayNightToggler ? "white" : "black")};
+    color: ${({ dayNightToggler }) => (dayNightToggler ? "black" : "white")};
     cursor: pointer;
-
     ${({ disabled }) => disabled && `opacity: 0.65; cursor: not-allowed`}
+
+    &:hover {
+        opacity: 0.85;
+    }
 `;
 
 const ButtonWrapper = styled.div`
     justify-self: center;
+`;
+
+const CurrentDayName = styled.span`
+    color: white;
+`;
+
+// toggler
+const CheckBoxWrapper = styled.div`
+    position: relative;
+`;
+const CheckBoxLabel = styled.label`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 42px;
+    height: 26px;
+    border-radius: 15px;
+    background: #305773;
+    cursor: pointer;
+    &::after {
+        content: "";
+        display: block;
+        border-radius: 50%;
+        width: 18px;
+        height: 18px;
+        margin: 3px;
+        background: #ffffff;
+        box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.2);
+        transition: 0.2s;
+    }
+`;
+const CheckBox = styled.input`
+    opacity: 0;
+    z-index: 1;
+    border-radius: 15px;
+    width: 42px;
+    height: 26px;
+    &:checked + ${CheckBoxLabel} {
+        background: #bebebe;
+        &::after {
+            content: "";
+            display: block;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            margin-left: 21px;
+            transition: 0.2s;
+        }
+    }
 `;
 
 const mapStateToProps = state => {
@@ -157,7 +223,8 @@ const mapStateToProps = state => {
         cityName: getCity(state),
         showCelsius: getCelsius(state),
         showFahrenheit: getFahrenheit(state),
-        currentDay: getCurrentDay(state)
+        currentDay: getCurrentDay(state),
+        dayNight: getDarkModeToggler(state)
     };
 };
 
@@ -166,7 +233,8 @@ const mapDispatchToProps = dispatch => ({
         dispatch(tempCelsius());
     },
     tempFahrenheitToggler: () => dispatch(tempFahrenheit()),
-    changeCurrentDayToggler: cityData => dispatch(changeCurrentDay(cityData))
+    changeCurrentDayToggler: cityData => dispatch(changeCurrentDay(cityData)),
+    dayNightModeToggler: () => dispatch(toggleMode())
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityWeather);
