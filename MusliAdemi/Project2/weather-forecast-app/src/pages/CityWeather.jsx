@@ -1,19 +1,20 @@
 //react
 import React from "react";
 import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
+import CurrentDay from "../components/CurrentDay/CurrentDay";
 //routing
 import { Link } from "react-router-dom";
 //redux
 import { connect } from "react-redux";
-import { getsixDaysWeather, getCity } from "../redux/apiData/api-reducer";
+import { getsixDaysWeather, getCity, getCurrentDay } from "../redux/apiData/api-reducer";
 import { tempCelsius, tempFahrenheit } from "../redux/tempActions/temp-actions";
+import { changeCurrentDay } from "../redux/apiData/api-actions";
 import { getCelsius, getFahrenheit } from "../redux/tempActions/temp-reducer";
 //style
 import styled from "styled-components";
 import { TryAgainButton as GoBackButton } from "./CityNotFound";
 //data
 import { days } from "../data/daysOfWeek";
-import CurrentDay from "../components/CurrentDay/CurrentDay";
 
 export const getDayOfWeekAsString = dt => {
     const date = new Date(dt * 1000);
@@ -22,7 +23,7 @@ export const getDayOfWeekAsString = dt => {
     return dayOfWeek;
 };
 
-const celsiusToFarhenheit = celsiusFormat => {
+export const celsiusToFarhenheit = celsiusFormat => {
     // Multiply by 9, then divide by 5, then add 32
     return (celsiusFormat * 9) / 5 + 32;
 };
@@ -32,22 +33,33 @@ export const roundTemperature = temperature => {
 };
 
 //get data from props [redux]
-const CityWeather = ({ cityName, cityData, tempFahrenheitToggler, tempCelsiusToggler, showCelsius, showFahrenheit }) => {
+const CityWeather = ({
+    currentDay,
+    cityName,
+    cityData,
+    tempFahrenheitToggler,
+    changeCurrentDayToggler,
+    tempCelsiusToggler,
+    showCelsius,
+    showFahrenheit
+}) => {
     const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     return (
         <Background>
             <Wrapper>
                 <CityDescription>City Weather for {capitalizedCityName}</CityDescription>
-                <div>
-                    <CelsiusButton onClick={tempFahrenheitToggler} disabled={showFahrenheit}>
-                        F
-                    </CelsiusButton>
-                    <CelsiusButton onClick={tempCelsiusToggler} disabled={showCelsius}>
-                        C
-                    </CelsiusButton>
-                </div>
-                <CurrentDay />
+                <Buttons>
+                    <div>
+                        <WeatherButtons onClick={tempFahrenheitToggler} disabled={showFahrenheit}>
+                            F
+                        </WeatherButtons>
+                        <WeatherButtons onClick={tempCelsiusToggler} disabled={showCelsius}>
+                            C
+                        </WeatherButtons>
+                    </div>
+                </Buttons>
+                <CurrentDay showCelsius={showCelsius} />
                 <OneWeekWeather>
                     {/* iterate through 1 week list of data */}
                     {cityData.map(oneDayWeather => {
@@ -57,6 +69,8 @@ const CityWeather = ({ cityName, cityData, tempFahrenheitToggler, tempCelsiusTog
                         const dayTempInFarhenheit = roundTemperature(celsiusToFarhenheit(dayTempInCelsius));
                         return (
                             <WeatherDaily
+                                selected={oneDayWeather.dt === currentDay.dt}
+                                changeCurrDay={() => changeCurrentDayToggler(oneDayWeather)}
                                 key={oneDayWeather.dt}
                                 imgIcon={icon}
                                 day={dayInStringFormat}
@@ -115,7 +129,13 @@ const CityDescription = styled.h1`
     /* color: white; */
 `;
 
-const CelsiusButton = styled.button`
+const Buttons = styled.div`
+    display: grid;
+    grid-auto-flow: column;
+    justify-items: end;
+`;
+
+const WeatherButtons = styled.button`
     padding: 10px;
     margin: 2px;
     border-radius: 5px;
@@ -136,7 +156,8 @@ const mapStateToProps = state => {
         cityData: getsixDaysWeather(state),
         cityName: getCity(state),
         showCelsius: getCelsius(state),
-        showFahrenheit: getFahrenheit(state)
+        showFahrenheit: getFahrenheit(state),
+        currentDay: getCurrentDay(state)
     };
 };
 
@@ -144,7 +165,8 @@ const mapDispatchToProps = dispatch => ({
     tempCelsiusToggler: () => {
         dispatch(tempCelsius());
     },
-    tempFahrenheitToggler: () => dispatch(tempFahrenheit())
+    tempFahrenheitToggler: () => dispatch(tempFahrenheit()),
+    changeCurrentDayToggler: cityData => dispatch(changeCurrentDay(cityData))
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CityWeather);

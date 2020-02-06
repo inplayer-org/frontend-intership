@@ -1,4 +1,4 @@
-import { FETCH_DATA_ERROR, FETCH_DATA_PRELOAD, FETCH_DATA_SUCCESS } from "./api-actions";
+import { FETCH_DATA_ERROR, FETCH_DATA_PRELOAD, FETCH_DATA_SUCCESS, CHANGE_CURRENT_DAY } from "./api-actions";
 
 const initialState = {
     preload: false,
@@ -17,7 +17,7 @@ const apiReducer = (state = initialState, action) => {
         case FETCH_DATA_SUCCESS:
             return {
                 ...state,
-                sixDaysWeather: action.payload.list.slice(1),
+                sixDaysWeather: action.payload.list,
                 currentDay: action.payload.list[0],
                 city: action.payload.city,
                 preload: false
@@ -28,6 +28,12 @@ const apiReducer = (state = initialState, action) => {
                 city: action.payload,
                 preload: false
             };
+        case CHANGE_CURRENT_DAY: {
+            return {
+                ...state,
+                currentDay: action.payload
+            };
+        }
         default:
             return state;
     }
@@ -41,6 +47,6 @@ export const getsixDaysWeather = state => {
 
 export const getCity = state => state.data.city.name;
 export const getPreload = state => state.data.preload;
-export const currentDay = state => state.data.currentDay;
+export const getCurrentDay = state => state.data.currentDay;
 
 export default apiReducer;
