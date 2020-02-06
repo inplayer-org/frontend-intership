@@ -1,22 +1,22 @@
 //react
 import React from "react";
-import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
-import CurrentDay from "../components/CurrentDay/CurrentDay";
-//routing
-import { Link } from "react-router-dom";
 //redux
 import { connect } from "react-redux";
-import { getsixDaysWeather, getCity, getCurrentDay } from "../redux/apiData/api-reducer";
-import { tempCelsius, tempFahrenheit } from "../redux/tempActions/temp-actions";
-import { changeCurrentDay } from "../redux/apiData/api-actions";
-import { getCelsius, getFahrenheit } from "../redux/tempActions/temp-reducer";
+//routing
+import { Link } from "react-router-dom";
 //style
 import styled from "styled-components";
-import { TryAgainButton as GoBackButton } from "./CityNotFound";
+import CurrentDay from "../components/CurrentDay/CurrentDay";
+import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
 //data
 import { days } from "../data/daysOfWeek";
+import { changeCurrentDay } from "../redux/apiData/api-actions";
+import { getCity, getCurrentDay, getsixDaysWeather } from "../redux/apiData/api-reducer";
 import { toggleMode } from "../redux/darkMode/dark-mode-actions";
 import { getDarkModeToggler } from "../redux/darkMode/dark-mode-reducer";
+import { tempCelsius, tempFahrenheit } from "../redux/tempActions/temp-actions";
+import { getCelsius, getFahrenheit } from "../redux/tempActions/temp-reducer";
+import { TryAgainButton as GoBackButton } from "./CityNotFound";
 
 export const getDayOfWeekAsString = dt => {
     const date = new Date(dt * 1000);
@@ -47,7 +47,8 @@ const CityWeather = ({
     dayNightModeToggler,
     dayNight
 }) => {
-    const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
+    const capitalizedCityName =
+        cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     return (
         <Background dayNightToggler={dayNight}>
@@ -58,14 +59,22 @@ const CityWeather = ({
                 </CheckBoxWrapper>
                 {/* <p>{dayNight ? "NIGHT" : "DAY"}</p> */}
                 <CityDescription dayNightToggler={dayNight}>
-                    City Weather for <CurrentDayName>{capitalizedCityName}</CurrentDayName>
+                    City Weather for {capitalizedCityName}
                 </CityDescription>
                 <Buttons>
                     <div>
-                        <WeatherButtons onClick={tempFahrenheitToggler} dayNightToggler={dayNight} disabled={showFahrenheit}>
+                        <WeatherButtons
+                            onClick={tempFahrenheitToggler}
+                            dayNightToggler={dayNight}
+                            disabled={showFahrenheit}
+                        >
                             F
                         </WeatherButtons>
-                        <WeatherButtons onClick={tempCelsiusToggler} dayNightToggler={dayNight} disabled={showCelsius}>
+                        <WeatherButtons
+                            onClick={tempCelsiusToggler}
+                            dayNightToggler={dayNight}
+                            disabled={showCelsius}
+                        >
                             C
                         </WeatherButtons>
                     </div>
@@ -77,7 +86,9 @@ const CityWeather = ({
                         const dayInStringFormat = getDayOfWeekAsString(oneDayWeather.dt);
                         const icon = oneDayWeather.weather[0].icon;
                         const dayTempInCelsius = roundTemperature(oneDayWeather.temp.day);
-                        const dayTempInFarhenheit = roundTemperature(celsiusToFarhenheit(dayTempInCelsius));
+                        const dayTempInFarhenheit = roundTemperature(
+                            celsiusToFarhenheit(dayTempInCelsius)
+                        );
                         return (
                             <WeatherDaily
                                 selected={oneDayWeather.dt === currentDay.dt}
@@ -116,6 +127,7 @@ export const Background = styled.div`
         dayNightToggler
             ? "linear-gradient(90deg, rgba(36, 59, 74, 1) 0%, rgba(0,0,0,1) 100%)"
             : "linear-gradient(90deg, rgba(50, 119, 163, 1) 8%, rgba(71, 220, 221, 1) 100%)"};
+    transition: all 0.3s linear;
 `;
 
 export const Wrapper = styled.div`
@@ -132,6 +144,7 @@ const OneWeekWeather = styled.div`
         /* border: 1px solid black; */
         min-width: 100px;
         text-align: center;
+        font-weight: bold;
         background-color: rgba(255, 255, 255, 0.2);
     }
 `;
@@ -142,6 +155,7 @@ const CityDescription = styled.h1`
     text-align: center;
     color: ${({ dayNightToggler }) => (dayNightToggler ? "white" : "black")};
     /* color: white; */
+    transition: all 0.3s linear;
 `;
 
 const Buttons = styled.div`
@@ -163,14 +177,11 @@ const WeatherButtons = styled.button`
     &:hover {
         opacity: 0.85;
     }
+    transition: all 0.3s linear;
 `;
 
 const ButtonWrapper = styled.div`
     justify-self: center;
-`;
-
-const CurrentDayName = styled.span`
-    color: white;
 `;
 
 // toggler
