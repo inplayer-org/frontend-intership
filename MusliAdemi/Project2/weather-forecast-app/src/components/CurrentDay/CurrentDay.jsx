@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { getDayOfWeekAsString, celsiusToFarhenheit } from "../../pages/CityWeather";
 import styled from "styled-components";
+import { getCurrentDay } from "../../redux/apiData/api-reducer";
 
 const getDayTime = timestamp => {
     let date = new Date(timestamp * 1000);
@@ -64,7 +65,7 @@ const DayAndWeather = styled.h2`
 
 const mapStateToProps = state => {
     return {
-        currentDay: state.data.currentDay
+        currentDay: getCurrentDay(state)
     };
 };
 

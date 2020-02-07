@@ -2,7 +2,7 @@ import { FETCH_DATA_ERROR, FETCH_DATA_PRELOAD, FETCH_DATA_SUCCESS, CHANGE_CURREN
 
 const initialState = {
     preload: false,
-    sixDaysWeather: [],
+    oneWeekWeather: [],
     currentDay: [],
     city: {}
 };
@@ -17,7 +17,7 @@ const apiReducer = (state = initialState, action) => {
         case FETCH_DATA_SUCCESS:
             return {
                 ...state,
-                sixDaysWeather: action.payload.list,
+                oneWeekWeather: action.payload.list,
                 currentDay: action.payload.list[0],
                 city: action.payload.city,
                 preload: false
@@ -39,12 +39,7 @@ const apiReducer = (state = initialState, action) => {
     }
 };
 
-export const getsixDaysWeather = state => {
-    console.log("STATE AFTER");
-    console.log(state);
-    return state.data.sixDaysWeather;
-};
-
+export const getOneWeekWeather = state => state.data.oneWeekWeather;
 export const getCity = state => state.data.city.name;
 export const getPreload = state => state.data.preload;
 export const getCurrentDay = state => state.data.currentDay;

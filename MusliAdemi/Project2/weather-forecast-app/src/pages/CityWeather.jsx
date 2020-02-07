@@ -11,7 +11,7 @@ import WeatherDaily from "../components/WeatherDaily/WeatherDaily";
 //data
 import { days } from "../data/daysOfWeek";
 import { changeCurrentDay } from "../redux/apiData/api-actions";
-import { getCity, getCurrentDay, getsixDaysWeather } from "../redux/apiData/api-reducer";
+import { getCity, getCurrentDay, getOneWeekWeather } from "../redux/apiData/api-reducer";
 import { toggleMode } from "../redux/darkMode/dark-mode-actions";
 import { getDarkModeToggler } from "../redux/darkMode/dark-mode-reducer";
 import { tempCelsius, tempFahrenheit } from "../redux/tempActions/temp-actions";
@@ -47,8 +47,7 @@ const CityWeather = ({
     dayNightModeToggler,
     dayNight
 }) => {
-    const capitalizedCityName =
-        cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
+    const capitalizedCityName = cityName.charAt(0).toUpperCase() + cityName.substring(1).toLowerCase();
 
     return (
         <Background dayNightToggler={dayNight}>
@@ -58,23 +57,13 @@ const CityWeather = ({
                     <CheckBoxLabel htmlFor="checkbox" />
                 </CheckBoxWrapper>
                 {/* <p>{dayNight ? "NIGHT" : "DAY"}</p> */}
-                <CityDescription dayNightToggler={dayNight}>
-                    City Weather for {capitalizedCityName}
-                </CityDescription>
+                <CityDescription dayNightToggler={dayNight}>City Weather for {capitalizedCityName}</CityDescription>
                 <Buttons>
                     <div>
-                        <WeatherButtons
-                            onClick={tempFahrenheitToggler}
-                            dayNightToggler={dayNight}
-                            disabled={showFahrenheit}
-                        >
+                        <WeatherButtons onClick={tempFahrenheitToggler} dayNightToggler={dayNight} disabled={showFahrenheit}>
                             F
                         </WeatherButtons>
-                        <WeatherButtons
-                            onClick={tempCelsiusToggler}
-                            dayNightToggler={dayNight}
-                            disabled={showCelsius}
-                        >
+                        <WeatherButtons onClick={tempCelsiusToggler} dayNightToggler={dayNight} disabled={showCelsius}>
                             C
                         </WeatherButtons>
                     </div>
@@ -86,9 +75,7 @@ const CityWeather = ({
                         const dayInStringFormat = getDayOfWeekAsString(oneDayWeather.dt);
                         const icon = oneDayWeather.weather[0].icon;
                         const dayTempInCelsius = roundTemperature(oneDayWeather.temp.day);
-                        const dayTempInFarhenheit = roundTemperature(
-                            celsiusToFarhenheit(dayTempInCelsius)
-                        );
+                        const dayTempInFarhenheit = roundTemperature(celsiusToFarhenheit(dayTempInCelsius));
                         return (
                             <WeatherDaily
                                 selected={oneDayWeather.dt === currentDay.dt}
@@ -231,7 +218,7 @@ const CheckBox = styled.input`
 
 const mapStateToProps = state => {
     return {
-        cityData: getsixDaysWeather(state),
+        cityData: getOneWeekWeather(state),
         cityName: getCity(state),
         showCelsius: getCelsius(state),
         showFahrenheit: getFahrenheit(state),

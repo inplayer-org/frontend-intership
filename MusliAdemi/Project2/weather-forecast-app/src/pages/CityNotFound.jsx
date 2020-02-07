@@ -8,13 +8,12 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 import { Background, Wrapper } from "./CityWeather";
 
-const CityNotFound = props => {
-    const city = props.cityName;
+const CityNotFound = ({ cityName }) => {
     return (
         <Background>
             <Wrapper>
                 <h1>
-                    City <CityName>{city}</CityName> not found.
+                    City <CityName>{cityName}</CityName> not found.
                 </h1>
                 <br />
                 <Link to={"/"}>
