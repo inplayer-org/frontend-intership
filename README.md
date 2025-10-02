@@ -1,3 +1,6 @@
+**THIS REPOSITORY IS MOVED TO GITLAB**
+
+
 # InPlayer Frontend Intership Program
 
 ## Project 1: Responsive Photography Website
